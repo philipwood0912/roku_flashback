@@ -21,16 +21,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Flashback Log-In</title>
 </head>
-<body>
-    <?php echo !empty($message)?$message:'';?>
-    <form action="login_page.php" method="post">
-        <label>Username:</label>
-        <input name="username" type="text" value="">
-        <label>Password:</label>
-        <input name="password" type="password" value="">
-        <button name="submit">Sign-In</button>
-    </form>
+<body id="login-body">
+    <div id="login-content">
+        <img src="../images/roku_logo.svg" alt="logo">
+        <h2 id="login-title"><?php echo !empty($message)?$message:'Please Sign-In';?></h2>
+        <form id="login" action="login_page.php" method="post">
+            <label class="yo">Username</label>
+            <input name="username" type="text" value="">
+            <label>Password</label>
+            <input name="password" type="password" value="">
+            <button name="submit">Sign-In</button>
+        </form>
+        <a href="signup_page.php"><h2>Don't have an account?<br>Click to sign-up now</h2></a>
+    </div>
 </body>
 </html>
