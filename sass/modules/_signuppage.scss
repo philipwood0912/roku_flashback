@@ -1,0 +1,44 @@
+#signup-body {
+    background-color: $main-color;
+    padding: 10px;
+}
+#signup-content {
+    padding: 20px 0px;
+    text-align: center;
+    background-color: white;
+    a {
+        text-decoration: none;
+        color: $main-color;
+    }
+    img {
+        width: 300px;
+    }
+    #signup-title {
+        color: $main-color;
+    }
+    #signup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        label {
+            color: $main-color;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 300px;
+            margin-bottom: 10px;
+        }
+        button {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: $main-color;
+            font-size: 22px;
+            padding: 5px 10px;
+        }
+        #section {
+            font-size: 22px;
+            color: $main-color;
+        }
+    }
+}
