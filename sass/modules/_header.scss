@@ -1,0 +1,47 @@
+#main-header {
+    height: 125px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 5px solid $main-color;
+    padding: 0px 10px;
+}
+#header-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#search {
+    button {
+        width: 35px;
+        height: 35px;
+    }
+    input {
+        font-size: 18px;
+    }
+}
+#main-content {
+    width: 400px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    li {
+        list-style: none;
+    }
+    #logout {
+        width: 35px;
+        height: 35px;
+    }
+}
+#nav {
+    a {
+        text-decoration: none;
+        padding: 0px 10px;
+        margin: 0px 10px;
+        color: $main-color;
+        font-size: 25px;
+    }
+}

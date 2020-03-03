@@ -1,0 +1,17 @@
+.actual-content {
+    display: flex;
+    flex-direction: row;
+    background-color: $main-color;
+    overflow: hidden;
+    padding: 10px 0px;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.title {
+    font-size: 40px;
+    color: $main-color;
+    margin: 20px 0px 20px 20px;
+}
