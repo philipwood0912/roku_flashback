@@ -1,24 +1,24 @@
 <?php
 
-function login($username, $password){
+function login($email, $password){
     $pdo = Database::getInstance()->getConnection();
     // query chekcing user existance
-    $check_exist_query = 'SELECT COUNT(*) FROM `tbl_users` WHERE User_Name =:username';
+    $check_exist_query = 'SELECT COUNT(*) FROM `tbl_users` WHERE User_Email =:email';
     $user_set = $pdo->prepare($check_exist_query);
     $user_set->execute(
         array(
-            ':username'=>$username
+            ':email'=>$email
         )
     );
 
     if($user_set->fetchColumn()>0){
             //check if match
-            $check_match_query = 'SELECT * FROM `tbl_users` WHERE User_Name =:username';
+            $check_match_query = 'SELECT * FROM `tbl_users` WHERE User_Email =:email';
             $check_match_query .= ' AND User_Pass =:password';
             $user_match = $pdo->prepare($check_match_query);
             $user_match->execute(
                 array(
-                    ':username'=>$username,
+                    ':email'=>$email,
                     ':password'=>$password
                 )
             );
@@ -33,11 +33,11 @@ function login($username, $password){
                 return true;
             } else {
                 //return true for specific message
-                return "wrong pass";
+                return "Password is wrong";
             }
            
     } else {
         //return false for another message
-        return "user does not exist";
+        return "Email does not exist";
     }
 }

@@ -1,3 +1,9 @@
 @import '_var';
 @import 'modules/_loginpage';
-@import 'modules/signuppage';
+@import 'modules/_signuppage';
+@import 'modules/_header';
+@import 'modules/_home';
+
+.hidden {
+    display: none;
+}

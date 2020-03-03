@@ -4,15 +4,18 @@
         $firstname = trim($_POST['firstname']);
         $lastname = trim($_POST['lastname']);
         $email = trim($_POST['email']);
-        $username = trim($_POST['username']);
+        $conemail = trim($_POST['conemail']);
         $password = trim($_POST['password']);
         $conpassword = trim($_POST['conpassword']);
-        $section = trim($_POST['section']);
-        if(!empty($firstname) && !empty($lastname) && !empty($email) && !empty($username) && !empty($password) && !empty($conpassword)){
-            if($password === $conpassword){
-                $message = signup($firstname, $lastname, $email, $username, $password, $section);
+        if(!empty($firstname) && !empty($lastname) && !empty($email) && !empty($conemail) && !empty($password) && !empty($conpassword)){
+            if($email === $conemail){
+                if($password === $conpassword) {
+                    $message = signup($firstname, $lastname, $email, $password);
+                } else {
+                    $message = "Passwords do not match";
+                }
             } else {
-                $message = "Passwords must match";
+                $message = "Emails do not match";
             }
         } else {
             $message = "Please fill out required fields";
@@ -38,17 +41,12 @@
             <input name="lastname" type="text" value="">
             <label>Email</label>
             <input name="email" type="email" value="">
-            <label>Username</label>
-            <input name="username" type="text" value="">
+            <label>Confirm Email</label>
+            <input name="conemail" type="email" value="">
             <label>Password</label>
             <input name="password" type="password" value="">
             <label>Confirm Password</label>
             <input name="conpassword" type="password" value="">
-            <label>Content</label>
-            <select id="section" name="section">
-                <option value="Adult">Adult</option>
-                <option value="Kids">Kids</option>
-            </select>
             <button name="submit">Sign-Up</button>
         </form>
         <a href="login_page.php"><h2>Sign-In</h2></a>
