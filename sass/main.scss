@@ -3,7 +3,11 @@
 @import 'modules/_signuppage';
 @import 'modules/_header';
 @import 'modules/_home';
-
+@import 'modules/_profilepage';
 .hidden {
     display: none;
+}
+li {
+    text-decoration: none;
+    list-style: none;
 }

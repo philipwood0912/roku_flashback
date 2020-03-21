@@ -1,5 +1,7 @@
+import ProfileComponent from './ProfileComponent.js';
 export default {
     template: `
+        <div v-if="this.$parent.profilepick">
         <div id="home-content">
             <h2 class="title">Movies</h2>
             <div class="actual-content">
@@ -16,8 +18,16 @@ export default {
                 </div>
             </div>
         </div>
+        </div>
+        <div v-else>
+        <profiles></profiles>
+        </div>
     `,
     props: ['movieGenre'],
+    components: {
+        //user: UserComponent
+        profiles: ProfileComponent
+    },
     data: function() {
         return {
             moviestitle: [],
@@ -83,7 +93,7 @@ export default {
         },
     },
     created: function() {
-        this.pullInformation("movies", "movie", this.movies);
-        this.pullInformation("tvshows", "tv", this.tvshows);
+        // this.pullInformation("movies", "movie", this.movies);
+        // this.pullInformation("tvshows", "tv", this.tvshows);
     }
 }
