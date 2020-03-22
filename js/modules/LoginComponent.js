@@ -5,14 +5,17 @@ export default {
             <div class="spiral sp-one"></div>
             <div class="spiral sp-two"></div>
             <div class="spiral sp-three"></div>
+            <div class="spiral sp-four"></div>
             <form id="login">
                 <img src="./images/roku_logo.svg" alt="logo">
                 <label class="yo">Email</label>
                 <input v-model="input.email" name="email" type="email">
                 <label>Password</label>
                 <input v-model="input.password" name="password" type="password">
-                <button v-on:click.prevent="login()" name="submit">Sign-In</button>
-                <a @click="signup()"><h2>Don't have an account?<br>Click to sign-up now</h2></a>
+                <div id="loginbut">
+                    <button v-on:click.prevent="login()" name="submit">Sign-In</button>
+                    <button @click.prevent="signup()">Sign Up Now!</button>
+                </div>
             </form>
         </div>
     </div>
@@ -64,7 +67,7 @@ export default {
                             this.$parent.authenticated = true;
                             console.log(this.$root.users);
                             this.$router.push('/home');
-                            debugger;
+                            //debugger;
 
                         }
                     })

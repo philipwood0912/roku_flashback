@@ -56,7 +56,7 @@ const vm = new Vue({
     },
     created: function(){
         if(this.authenticated === false && this.$router.currentRoute.path != "/login"){
-            debugger;
+            //debugger;
             this.$router.push('/login');
         }
     },

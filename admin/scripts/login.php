@@ -57,7 +57,7 @@ function login($email, $password){
                     $user['pname'] = "";
                     $user['permissions'] = "";
                     $user['avatar'] = "";
-                    $user['admin'] = 1;
+                    $user['admin'] = "";
                     $users[] = $user;
                 }
                 return $users;

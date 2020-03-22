@@ -20,19 +20,22 @@
         }
         label {
             color: $main-color;
-            font-size: 22px;
+            font-size: 30px;
             margin-bottom: 10px;
         }
         input {
             width: 300px;
             margin-bottom: 10px;
+            font-size: 18px;
+            padding: 3px;
         }
-        button {
-            margin-top: 20px;
-            margin-bottom: 10px;
-            color: $main-color;
-            font-size: 22px;
-            padding: 5px 10px;
+        #loginbut {
+            margin-top: 10px;
+            button {
+                color: $main-color;
+                font-size: 22px;
+                padding: 5px 10px;
+            }
         }
         select {
             option {
@@ -62,11 +65,14 @@
     z-index: -2;
 }
 .sp-one {
-    transform: rotate(22.25deg);
+    transform: rotate(18deg);
 }
 .sp-two {
-    transform: rotate(44.50deg);
+    transform: rotate(36deg);
 }
 .sp-three {
-    transform: rotate(66.75deg);
+    transform: rotate(54deg);
+}
+.sp-four {
+    transform: rotate(72deg);
 }
