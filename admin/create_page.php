@@ -6,4 +6,5 @@
         $section = $_POST['section'];
         $avatar = $_POST['avatar'];
         $new_profile = createUser($link, $name, $section, $avatar);
+        echo json_encode($new_profile);
     }

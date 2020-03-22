@@ -4,10 +4,14 @@
 @import 'modules/_header';
 @import 'modules/_home';
 @import 'modules/_profilepage';
+@import 'modules/_createprofile';
 .hidden {
     display: none;
 }
 li {
     text-decoration: none;
     list-style: none;
+}
+body{
+    font-family:'Oswald',sans-serif;
 }
