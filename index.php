@@ -25,19 +25,28 @@
             <img src="images/roku_logo.svg" alt="logo">
             <div id="header-content">
                 <div id="main-content">
-                    <form id="search" action="" method="get">
-                        <input>
-                        <button><i class="fas fa-search fa-2x"></i></button>
-                    </form>
-                    <li><i class="fas fa-cog fa-2x" style="color:#6c3c97;"></i></li>
-                    <li><i class="fas fa-user fa-2x" style="color:#6c3c97;"></i></li>
+                    <div v-if="!mainlock">
+                        <div id="search">
+                            <input>
+                            <button><i class="fas fa-search fa-2x"></i></button>
+                        </div>
+                    </div>
+                    <div v-if="!adminlock">
+                        <button><i class="fas fa-cog fa-2x" style="color:#6c3c97;"></i></button>
+                    </div>
+                    <button v-on:click="profilePicker()"><i class="fas fa-user fa-2x" style="color:#6c3c97;"></i></button>
                     <button v-on:click="logout()" id="logout" name="logout"><i class="fas fa-sign-out-alt fa-2x" style="color:#6c3c97"></i></button>
                 </div>
                 <div id="nav">
-                    <router-link to="/home">Home</router-link>
-                    <router-link to="/movies">Movies</router-link>
-                    <router-link to="/tv">TV-Shows</router-link>
-                    <router-link to="/music">Music</router-link>
+                    <div v-if="!mainlock">
+                        <router-link to="/home">Home</router-link>
+                        <router-link to="/movies">Movies</router-link>
+                        <router-link to="/tv">TV-Shows</router-link>
+                        <router-link to="/music">Music</router-link>
+                    </div>
+                    <div v-else>
+                        <router-link to="/kids">Kids</router-link>
+                    </div>
                 </div>
             </div> 
         </div>

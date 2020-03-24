@@ -11,5 +11,6 @@
     require_once ABSPATH.'/config/config.php';
     require_once ADMIN_SCRIPT_PATH.'/functions.php';
     require_once ADMIN_SCRIPT_PATH.'/login.php';
+    require_once ADMIN_SCRIPT_PATH.'/home.php';
     require_once ADMIN_SCRIPT_PATH.'/signup.php';
     require_once ADMIN_SCRIPT_PATH.'/create.php';

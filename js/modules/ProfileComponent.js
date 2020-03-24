@@ -29,9 +29,12 @@ export default {
         navToUserHome(data){
             this.$root.profilepick = true;
             this.$root.user = data;
-            if(data.permissions == false){
-                this.$router.replace('/kids');
-                debugger;
+            this.$root.isadmin = data.admin;
+            this.$root.permissions = data.permissions;
+            if(this.$root.permissions == false){
+                this.$router.push('/kids').catch(err => {});
+            } else if (this.$router.currentRoute.path == '/kids'){
+                this.$router.push('/home').catch(err => {});
             }
         },
         navToCreate(){
