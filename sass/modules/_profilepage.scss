@@ -73,6 +73,7 @@
 }
 .name-enter, .name-leave-to {
     opacity: 0;
+    z-index: 1000;
  }
 
 .moveup {

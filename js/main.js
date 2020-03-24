@@ -12,8 +12,8 @@ const routes = [
     { path: '/login', name: 'login', component: LoginComponent },
     { path: '/signup', name: 'signup', component: SignupComponent },
     { path: '/create', name: 'create', component: CreateProfileComponent },
-    { path: '/kids', name: 'kids', component: KidsComponent },
     { path: '/home', name: 'home', component: HomeComponent },
+    { path: '/kids', name: 'kids', component: KidsComponent },
     { path: '/movies', name: 'movies', component: MovieComponent },
     { path: '/tv', name: 'tv', component: TvComponent },
     { path: '/music', name: 'music', component: MusicComponent },
@@ -31,7 +31,9 @@ const vm = new Vue({
         authenticated: false,
         profilepick: false,
         users: [],
-        user: {}
+        user: {},
+        isadmin: false,
+        permissions: false
     },
 
     methods: {
@@ -52,33 +54,62 @@ const vm = new Vue({
             this.user = {};
             this.$router.push('/login');
             debugger;
+        },
+        profilePicker() {
+            this.user = {};
+            this.profilepick = false;
+            debugger;
         }
     },
-    created: function(){
-        if(this.authenticated === false && this.$router.currentRoute.path != "/login"){
-            //debugger;
-            this.$router.push('/login');
-        }
-    },
+    // created: function(){
+    //     if(this.authenticated === false && this.$router.currentRoute.path != "/login"){
+    //         this.$router.push('/login');
+    //     }
+    // },
+    //for testing ----------
+        created: function(){
+            this.authenticated = true;
+            this.profilepick = true;
+            this.permissions = true;
+            this.isadmin = true;
+        },
     mounted: function(){
         // this.pullGenres('movie', this.movieGenre);
         // this.pullGenres('tv', this.tvGenre);
+    },
+    computed: {
+        mainlock: function(){
+            if(this.isadmin && this.permissions == true || !this.isadmin && this.permissions == true){
+                //debugger;
+                return false;
+            } else {
+                debugger;
+                return true;
+            }
+        },
+        adminlock: function(){
+            if(this.isadmin == true){
+                //debugger;
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     router
 }).$mount("#app");
 
 router.beforeEach((to, from, next) => {
     //console.log('router guard fired!', to, from, vm.authenticated);
-    if(to.path !== "/login"){
+    if(to.path !== "/login" && to.path !== '/kids'){
         if (vm.authenticated == false && to.path != '/signup') {
             next('/login');
-            debugger;
-          } else {
-              next();
-              debugger;
-          }
+            //debugger;
+        } else {
+            next();
+        }
     } else {
         next();
-        debugger;
+        //debugger;
     }
   });

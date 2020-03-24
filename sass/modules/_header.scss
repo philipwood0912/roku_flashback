@@ -22,16 +22,12 @@
     }
 }
 #main-content {
-    width: 400px;
     height: 60px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    li {
-        list-style: none;
-    }
-    #logout {
+    align-items: flex-end;
+    button{
+        margin-left: 10px;
         width: 35px;
         height: 35px;
     }
