@@ -15,12 +15,13 @@
             right: 0;
         }
 }
-.home-wrp{
+.home-wrp {
     padding: 20px 0px;
-    overflow: scroll;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     position: relative;
+    transition: 1s ease;
 }
 .content {
     display: flex;
@@ -44,6 +45,8 @@
             .poster-info {
                 position: relative;
                 height: 450px;
+                width: 85vw;
+                background-color: rgba(0,0,0,0.8);
                 //opacity: 0;
                 img {
                     height: 450px;
@@ -51,26 +54,37 @@
                 .poster-info-con {
                     position: absolute;
                     height: 450px;
-                    width: 100%;
                     top: 0;
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-end;
+                    pointer-events: none;
                     h2 {
-                        font-size: 35px;
+                        padding: 10px;
+                        border-radius: 0px 50px 0px 0px;
+                        width: 400px;
+                        font-size: 40px;
                         color: white;
+                        background-color: rgba(0,0,0,0.8);
                     }
-                    h3 {
-                        color: white;
-                        font-size: 30px;
-                    }
-                    h4 {
-                        color: white;
-                        font-size: 25px;
+                    div {
+                        display: flex;
+                        flex-direction: row;
+                        width: 400px;
+                        background-color: rgba(0,0,0,0.8);
+                        h3 {
+                            padding: 10px;
+                            color: white;
+                            font-size: 25px;
+                        }
                     }
                     p {
+                        padding: 10px;
+                        width: 400px;
                         color: white;
                         font-size: 20px;
+                        line-height: 25px;
+                        background-color: rgba(0,0,0,0.8);
                     }
                 }
             }
