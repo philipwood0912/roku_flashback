@@ -35,9 +35,8 @@ export default {
         </div>
     `,
     components: {
-        //user: UserComponent
         profiles: ProfileComponent,
-        popup : PopupComponent,
+        popup: PopupComponent,
         right: RightButton,
         left: LeftButton
     },

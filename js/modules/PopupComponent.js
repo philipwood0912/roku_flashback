@@ -3,11 +3,11 @@ export default {
     template: `
         <div class="content" v-on:click="showInfo($event, $event.path[3], offset)">
         <div class="poster">
-            <img :src="this.$parent.getImgUrl(obj.poster_path)" alt="movie poster">
+            <img :src="this.$root.getImgUrl(obj.poster_path)" alt="movie poster">
             <div class="content-info">
                 <transition name="popup" v-on:before-enter="beforeEnter" v-on:before-leave="beforeLeave">
                     <div v-if="this.show" class="poster-info">
-                        <img :src="this.$parent.getBckUrl(obj.backdrop_path)" alt="backdrop"">
+                        <div v-if="obj.backdrop_path != null"><img :src="this.$root.getBckUrl(obj.backdrop_path)" alt="backdrop""></div>
                         <div class="poster-info-con">
                             
                             <h2>{{obj.title}}</h2>
@@ -22,7 +22,6 @@ export default {
         </div>
         </div>
     `,
-    //v-on:click="hideInfo($event.path[5], offset)"
     data: function() {
         return {
             show: false

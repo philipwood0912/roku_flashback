@@ -59,7 +59,13 @@ const vm = new Vue({
             this.user = {};
             this.profilepick = false;
             debugger;
-        }
+        },
+        getImgUrl(path){
+            return "https://image.tmdb.org/t/p/w300" + path + "";
+        },
+        getBckUrl(path){
+            return "https://image.tmdb.org/t/p/w780" + path + "";
+        },
     },
     // created: function(){
     //     if(this.authenticated === false && this.$router.currentRoute.path != "/login"){
