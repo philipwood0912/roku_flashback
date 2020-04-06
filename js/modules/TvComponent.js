@@ -5,61 +5,74 @@ import RightButton from './RightButton.js';
 export default {
     template: `
     <div v-if="this.$parent.profilepick">
-        <div id="home-content">
-            <h2 class="title">TV Shows - 2000s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.showsTen" :obj="movie" :key="index" :offset="index">
+        <div class="content-bdy">
+            <div class="title-wrp main-border-half">
+            <h2 class="title main-border-less main-text-color">TV Shows - 2000s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.showsTen" :type="false" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
+                <div class="content-buttons">
                     <left :num="1" :array="this.showsTen"></left>
                     <right :num="0" :array="this.showsTen"></right>
                 </div>
             </div>
-            <h2 class="title">TV Shows - 1990s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.showsNine" :obj="movie" :key="index" :offset="index">
+            <div class="title-wrp main-border-half">
+            <h2 class="title main-border-less main-text-color">TV Shows - 1990s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.showsNine" :type="false" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
+                <div class="content-buttons">
                     <left :num="1" :array="this.showsNine"></left>
                     <right :num="0" :array="this.showsNine"></right>
                 </div>
             </div>
-            <h2 class="title">TV Shows - 1980s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.showsEight" :obj="movie" :key="index" :offset="index">
+            <div class="title-wrp main-border-half">
+            <h2 class="title main-border-less main-text-color">TV Shows - 1980s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.showsEight" :type="false" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
+                <div class="content-buttons">
                     <left :num="1" :array="this.showsEight"></left>
                     <right :num="0" :array="this.showsEight"></right>
                 </div>
             </div>
-            <h2 class="title">TV Shows - 1970s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.showsSeven" :obj="movie" :key="index" :offset="index">
+            <div class="title-wrp main-border-half">
+            <h2 class="title main-border-less main-text-color">TV Shows - 1970s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.showsSeven" :type="false" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
+                <div class="content-buttons">
                     <left :num="1" :array="this.showsSeven"></left>
                     <right :num="0" :array="this.showsSeven"></right>
                 </div>
             </div>
-            <h2 class="title">TV Shows - 1960s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.showsSix" :obj="movie" :key="index" :offset="index">
+            <div class="title-wrp main-border-half">
+            <h2 class="title main-border-less main-text-color">TV Shows - 1960s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.showsSix" type="false" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
+                <div class="content-buttons">
                     <left :num="1" :array="this.showsSix"></left>
                     <right :num="0" :array="this.showsSix"></right>
                 </div>
+            </div>
+            <div class="title-wrp main-border-half">
+                <h2 class="title main-border-less main-text-color"></h2>
             </div>
         </div>
     </div>
@@ -94,8 +107,6 @@ export default {
                         continue;
                     } else{
                         arr.push(data.results[i]);
-                        delete Object.assign(arr[i], {['release_date']: arr[i]['first_air_date'] })['first_air_date'];
-                        delete Object.assign(arr[i], {['title']: arr[i]['name'] })['name'];
                     }
                 }
             })
