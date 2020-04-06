@@ -7,11 +7,14 @@ import LoginComponent from "./modules/LoginComponent.js";
 import SignupComponent from "./modules/SignupComponent.js";
 import CreateProfileComponent from "./modules/CreateProfileComponent.js";
 import KidsComponent from "./modules/KidsComponent.js";
+import HeaderComponent from "./modules/HeaderComponent.js";
+import SearchComponent from "./modules/SearchComponent.js";
 const routes = [
     { path: '/', redirect: { name: "login" } },
     { path: '/login', name: 'login', component: LoginComponent },
     { path: '/signup', name: 'signup', component: SignupComponent },
     { path: '/create', name: 'create', component: CreateProfileComponent },
+    { path: '/search/:type/:name', name: 'search', component: SearchComponent, props: true},
     { path: '/home', name: 'home', component: HomeComponent },
     { path: '/kids', name: 'kids', component: KidsComponent },
     { path: '/movies', name: 'movies', component: MovieComponent },
@@ -33,9 +36,12 @@ const vm = new Vue({
         users: [],
         user: {},
         isadmin: false,
-        permissions: false
+        permissions: false,
+        searchArr: []
     },
-
+    components: {
+        mainhead: HeaderComponent
+    },
     methods: {
         pullGenres(str, arr){
             let url = `https://api.themoviedb.org/3/genre/${str}/list?api_key=6c056957a2e9be6e0e41a303073bae05&language=en-US`;
@@ -47,25 +53,13 @@ const vm = new Vue({
             })
             .catch(err => console.log(err))
         },
-        logout(){
-            this.authenticated = false;
-            this.profilepick = false;
-            this.users = [];
-            this.user = {};
-            this.$router.push('/login');
-            debugger;
-        },
-        profilePicker() {
-            this.user = {};
-            this.profilepick = false;
-            debugger;
-        },
         getImgUrl(path){
             return "https://image.tmdb.org/t/p/w300" + path + "";
         },
         getBckUrl(path){
             return "https://image.tmdb.org/t/p/w780" + path + "";
         },
+        
     },
     // created: function(){
     //     if(this.authenticated === false && this.$router.currentRoute.path != "/login"){
@@ -78,6 +72,7 @@ const vm = new Vue({
             this.profilepick = true;
             this.permissions = true;
             this.isadmin = true;
+            this.$el;
         },
     mounted: function(){
         // this.pullGenres('movie', this.movieGenre);
@@ -86,7 +81,6 @@ const vm = new Vue({
     computed: {
         mainlock: function(){
             if(this.isadmin && this.permissions == true || !this.isadmin && this.permissions == true){
-                //debugger;
                 return false;
             } else {
                 debugger;
@@ -95,7 +89,6 @@ const vm = new Vue({
         },
         adminlock: function(){
             if(this.isadmin == true){
-                //debugger;
                 return false;
             } else {
                 return true;
@@ -110,12 +103,13 @@ router.beforeEach((to, from, next) => {
     if(to.path !== "/login" && to.path !== '/kids'){
         if (vm.authenticated == false && to.path != '/signup') {
             next('/login');
-            //debugger;
+            debugger;
         } else {
             next();
+            debugger;
         }
     } else {
         next();
-        //debugger;
+        debugger;
     }
   });

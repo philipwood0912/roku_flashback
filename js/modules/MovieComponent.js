@@ -5,61 +5,74 @@ import RightButton from './RightButton.js';
 export default {
     template: `
     <div v-if="this.$parent.profilepick">
-        <div id="home-content">
-            <h2 class="title">Movies 2000s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.moviesTen" :obj="movie" :key="index" :offset="index">
+        <div class="content-body">
+            <div class="title-wrp main-border-half">
+                <h2 class="title main-border-less main-text-color">Movies - 2000s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.moviesTen" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
-                    <left :num="1" :array="this.moviesTen"></left>
-                    <right :num="0" :array="this.moviesTen"></right>
+                <div class="content-buttons">
+                    <left :num="1" :array="this.moviesTen" :color="'#6c3c97'"></left>
+                    <right :num="0" :array="this.moviesTen" :color="'#6c3c97'"></right>
                 </div>
             </div>
-            <h2 class="title">Movies 1990s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.moviesNine" :obj="movie" :key="index" :offset="index">
+            <div class="title-wrp main-border-half">
+            <h2 class="title main-border-less main-text-color">Movies - 1990s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.moviesNine" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
-                    <left :num="1" :array="this.moviesNine"></left>
-                    <right :num="0" :array="this.moviesNine"></right>
+                <div class="content-buttons">
+                    <left :num="1" :array="this.moviesNine" :color="'#6c3c97'"></left>
+                    <right :num="0" :array="this.moviesNine" :color="'#6c3c97'"></right>
                 </div>
             </div>
-            <h2 class="title">Movies 1980s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.moviesEight" :obj="movie" :key="index" :offset="index">
+            <div class="title-wrp main-border-half">
+            <h2 class="title main-border-less main-text-color">Movies - 1980s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.moviesEight" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
-                    <left :num="1" :array="this.moviesEight"></left>
-                    <right :num="0" :array="this.moviesEight"></right>
+                <div class="content-buttons">
+                    <left :num="1" :array="this.moviesEight" :color="'#6c3c97'"></left>
+                    <right :num="0" :array="this.moviesEight" :color="'#6c3c97'"></right>
                 </div>
             </div>
-            <h2 class="title">Movies 1970s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.moviesSeven" :obj="movie" :key="index" :offset="index">
+            <div class="title-wrp main-border-half">
+            <h2 class="title main-border-less main-text-color">Movies - 1970s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.moviesSeven" type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
-                    <left :num="1" :array="this.moviesSeven"></left>
-                    <right :num="0" :array="this.moviesSeven"></right>
+                <div class="content-buttons">
+                    <left :num="1" :array="this.moviesSeven" :color="'#6c3c97'"></left>
+                    <right :num="0" :array="this.moviesSeven" :color="'#6c3c97'"></right>
                 </div>
             </div>
-            <h2 class="title">Movies 1960s</h2>
-            <div class="home-content">
-                <div class="home-wrp">
-                    <popup v-for="(movie, index) in this.moviesSix" :obj="movie" :key="index" :offset="index">
+            <div class="title-wrp main-border-half">
+            <h2 class="title main-border-less main-text-color">Movies - 1960s</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp main-border-full">
+                    <popup v-for="(movie, index) in this.moviesSix" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
-                <div class="home-buttons">
-                    <left :num="1" :array="this.moviesSix"></left>
-                    <right :num="0" :array="this.moviesSix"></right>
+                <div class="content-buttons">
+                    <left :num="1" :array="this.moviesSix" :color="'#6c3c97'"></left>
+                    <right :num="0" :array="this.moviesSix" :color="'#6c3c97'"></right>
                 </div>
+            </div>
+            <div class="title-wrp main-border-half">
+                <h2 class="title main-border-less main-text-color"></h2>
             </div>
         </div>
     </div>
@@ -95,13 +108,7 @@ export default {
                 }
             })
             .catch(err => console.log(err))
-        },
-        getImgUrl(path){
-            return "https://image.tmdb.org/t/p/w300" + path + "";
-        },
-        getBckUrl(path){
-            return "https://image.tmdb.org/t/p/w780" + path + "";
-        },
+        }
     },
     created: function() {
         this.pullMovies(2000, 2019, this.moviesTen);
