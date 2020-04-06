@@ -8,6 +8,7 @@ import SignupComponent from "./modules/SignupComponent.js";
 import CreateProfileComponent from "./modules/CreateProfileComponent.js";
 import KidsComponent from "./modules/KidsComponent.js";
 import HeaderComponent from "./modules/HeaderComponent.js";
+import FooterComponent from "./modules/FooterComponent.js";
 import SearchComponent from "./modules/SearchComponent.js";
 const routes = [
     { path: '/', redirect: { name: "login" } },
@@ -29,30 +30,19 @@ const router = new VueRouter({
 
 const vm = new Vue({
     data: {
-        movieGenre: [],
-        tvGenre: [],
         authenticated: false,
         profilepick: false,
-        users: [],
         user: {},
+        users: [],
         isadmin: false,
         permissions: false,
         searchArr: []
     },
     components: {
-        mainhead: HeaderComponent
+        mainhead: HeaderComponent,
+        mainfoot: FooterComponent
     },
     methods: {
-        pullGenres(str, arr){
-            let url = `https://api.themoviedb.org/3/genre/${str}/list?api_key=6c056957a2e9be6e0e41a303073bae05&language=en-US`;
-            fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                arr.push(data);
-            })
-            .catch(err => console.log(err))
-        },
         getImgUrl(path){
             return "https://image.tmdb.org/t/p/w300" + path + "";
         },
@@ -61,29 +51,23 @@ const vm = new Vue({
         },
         
     },
+    created: function() {
+        this.authenticated = this.$cookies.get('authenticated');
+        this.profilepick = this.$cookies.get('profile');
+        this.isadmin = this.$cookies.get('isadmin');
+        this.permissions = this.$cookies.get('permissions');
+        this.user = this.$cookies.get('currentuser');
+    },
     // created: function(){
     //     if(this.authenticated === false && this.$router.currentRoute.path != "/login"){
     //         this.$router.push('/login');
     //     }
     // },
-    //for testing ----------
-        created: function(){
-            this.authenticated = true;
-            this.profilepick = true;
-            this.permissions = true;
-            this.isadmin = true;
-            this.$el;
-        },
-    mounted: function(){
-        // this.pullGenres('movie', this.movieGenre);
-        // this.pullGenres('tv', this.tvGenre);
-    },
     computed: {
         mainlock: function(){
-            if(this.isadmin && this.permissions == true || !this.isadmin && this.permissions == true){
+            if(this.isadmin == true && this.permissions == true || !this.isadmin && this.permissions == true){
                 return false;
             } else {
-                debugger;
                 return true;
             }
         },
@@ -99,17 +83,13 @@ const vm = new Vue({
 }).$mount("#app");
 
 router.beforeEach((to, from, next) => {
-    //console.log('router guard fired!', to, from, vm.authenticated);
     if(to.path !== "/login" && to.path !== '/kids'){
         if (vm.authenticated == false && to.path != '/signup') {
             next('/login');
-            debugger;
         } else {
             next();
-            debugger;
         }
     } else {
         next();
-        debugger;
     }
   });

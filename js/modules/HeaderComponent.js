@@ -24,7 +24,7 @@ export default {
                     <div v-if="!adminlock">
                         <button><i class="fas fa-cog fa-2x" style="color:#6c3c97;"></i></button>
                     </div>
-                    <button v-on:click="profilePicker()"><i class="fas fa-user fa-2x" :style="{color: color}"></i></button>
+                    <button v-on:click="profilePicker()"><img class="userIcon" :src="'images/user/' + this.$parent.user.avatar"></button>
                     <button v-on:click="logout()" id="logout" name="logout"><i class="fas fa-sign-out-alt fa-2x" :style="{color: color}"></i></button>
                 </div>
                 <div class="nav">
