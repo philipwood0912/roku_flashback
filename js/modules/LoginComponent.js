@@ -32,6 +32,12 @@ export default {
 
     created: function(){
         this.$parent.profilepick = false;
+        this.$cookies.set('authenticated', false, 0);
+        this.$cookies.set('users', [], 0);
+        this.$cookies.set('profile', false, 0);
+        this.$cookies.set('currentuser', [], 0);
+        this.$cookies.set('isadmin', false, 0);
+        this.$cookies.set('permissions', false, 0);
     },
 
     methods: {
@@ -64,10 +70,11 @@ export default {
                             for(var i=0; i<data.length; i++){
                                 this.$parent.users.push(data[i]);
                             }
-                            this.$parent.authenticated = true;
-                            console.log(this.$root.users);
+                            //this.$parent.authenticated = true;
+                            this.$cookies.set('authenticated', true, 0);
+                            this.$cookies.set('users', JSON.stringify(this.$parent.users), 0);
                             this.$router.push('/home');
-                            //debugger;
+                            debugger;
 
                         }
                     })

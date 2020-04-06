@@ -22,23 +22,19 @@
 </head>
 <body>
     <main id="app">
-        <div v-if="!mainlock">
-        <mainhead :colorclass="'main-header-border'" :color="'#6c3c97'"></mainhead>
-        </div>
-        <div v-else>
-        <mainhead :colorclass="'kid-header-border'" :color="'#6FB270'"></mainhead>
-        </div>
+            <div v-if="!mainlock">
+                <mainhead :colorclass="'main-header-border'" :color="'#6c3c97'"></mainhead>
+            </div>
+            <div v-else>
+                <mainhead :colorclass="'kid-header-border'" :color="'#6FB270'"></mainhead>
+            </div>
         <router-view></router-view>
-        <div v-if="!mainlock">
-            <footer class="main-footer-border">
-                <h3>Copyright <?php echo date('Y');?></h3>
-            </footer>
-        </div>
-        <div v-else>
-            <footer class="kid-footer-border">
-                <h3>Copyright <?php echo date('Y');?></h3>
-            </footer>
-        </div>
+            <div v-if="!mainlock">
+                <mainfoot :colorclass="'main-footer-border'" :color="'#6c3c97'"></mainfoot>
+            </div>
+            <div v-else>
+                <mainfoot :colorclass="'kid-footer-border'" :color="'#6FB270'"></mainfoot>
+            </div>
     </main>
     <script defer src="js/main.js" type="module"></script>
 </body>
