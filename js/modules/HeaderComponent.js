@@ -95,7 +95,9 @@ export default {
                                 this.$parent.searchArr.push(data.results[i]);
                             }
                         }
-                        this.$router.push({path:`/search/${type}/${str}`});
+                        if(this.$router.currentRoute.path != `/search/${type}/${str}`){
+                            this.$router.push({path:`/search/${type}/${str}`});
+                        }
                     })
                     .catch(err => console.log(err))
                 }

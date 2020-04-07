@@ -59,6 +59,9 @@ const vm = new Vue({
         this.isadmin = this.$cookies.get('isadmin');
         this.permissions = this.$cookies.get('permissions');
         this.user = this.$cookies.get('currentuser');
+        if(this.$router.currentRoute.matched[0].path == "/search/:type/:name"){
+            this.$router.push('/home');
+        }
     },
     // created: function(){
     //     if(this.authenticated === false && this.$router.currentRoute.path != "/login"){
