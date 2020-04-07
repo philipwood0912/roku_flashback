@@ -9,10 +9,10 @@ export default {
                         <label>Profile Name</label><br>
                         <input v-model="input.name" name="name" type="text" value=""><br>
                         <label>Profile Setting</label><br>
-                        <div id="chk-top" class="check-wrp"><input class="check" type="checkbox" value="0" v-model="input.section"><label class="chklabel">Kids Only</label></div>
+                        <div class="check-wrp chk-top"><input class="check" type="checkbox" value="0" v-model="input.section"><label class="chklabel">Kids Only</label></div>
                         <div class="check-wrp"><input class="check" type="checkbox" value="1" v-model="input.section"><label class="chklabel">General</label></div>
                         <label>Avatar</label><br>
-                        <div id="avatar-wrp">
+                        <div class="avatar-wrp">
                             <select v-model="input.avatar" id="avatar-select" name="avatar">
                                 <option class="option" value="default.jpg">Default</option>
                                 <option class="option" value="invader.svg">Invader</option>
@@ -49,9 +49,9 @@ export default {
             if (this.input.name != "" && this.input.section.length > 0 && this.input.avatar != "") {
                 if(this.input.section.length > 1){
                     this.message = "You can't pick both..";
-                    debugger;
+                    
                 } else {
-                    debugger;
+                    
                     // fetch the user from the DB
                     // generate the form data
                     let formData = new FormData();
@@ -79,7 +79,7 @@ export default {
                                     this.$parent.users[0].avatar = data.avatar;
                                     this.$parent.users[0].admin = data.admin;
                                     this.message = "New profile created!";
-                                    debugger;
+                                    
                                 } else {
                                     let obj = {
                                         id: this.$parent.users[0].id,
@@ -91,7 +91,7 @@ export default {
                                     };
                                     this.$parent.users.push(obj);
                                     this.message = "New profile created!";
-                                    debugger;
+                                    
                                 }
                             }
                         })

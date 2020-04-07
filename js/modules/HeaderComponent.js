@@ -1,8 +1,8 @@
 export default {
-        props: ['colorclass', 'color'],
+        props: ['colorclass', 'color', 'user'],
         template: `
         <div v-if="this.$parent.profilepick" :class="'main-header ' + colorclass">
-            <div v-if="!mainlock">
+            <div v-if="!this.$parent.mainlock">
             <img class="logo-image" src="images/roku_logo.svg" alt="logo">
             </div>
             <div v-else>
@@ -10,7 +10,7 @@ export default {
             </div>
             <div class="header-content">
                 <div class="main-content">
-                    <div v-if="!mainlock">
+                    <div v-if="!this.$parent.mainlock">
                         <div id="search">
                             <select v-model="choice">
                                 <option value="">Choose</option>
@@ -21,14 +21,14 @@ export default {
                             <button v-on:click="search(searchBar, choice)"><i class="fas fa-search fa-2x" :style="{color: color}"></i></button>
                         </div>
                     </div> 
-                    <div v-if="!adminlock">
-                        <button><i class="fas fa-cog fa-2x" style="color:#6c3c97;"></i></button>
+                    <div v-if="!this.$parent.adminlock">
+                        <button v-on:click="accountSetting()"><i class="fas fa-cog fa-2x" style="color:#6c3c97;"></i></button>
                     </div>
-                    <button v-on:click="profilePicker()"><img class="userIcon" :src="'images/user/' + this.$parent.user.avatar"></button>
+                    <button v-on:click="profilePicker()"><img class="userIcon" :src="'images/user/' + this.avatarcheck"></button>
                     <button v-on:click="logout()" id="logout" name="logout"><i class="fas fa-sign-out-alt fa-2x" :style="{color: color}"></i></button>
                 </div>
                 <div class="nav">
-                    <div v-if="!mainlock">
+                    <div v-if="!this.$parent.mainlock">
                         <router-link to="/home">Home</router-link>
                         <router-link to="/movies">Movies</router-link>
                         <router-link to="/tv">TV-Shows</router-link>
@@ -49,6 +49,10 @@ export default {
             }
         },
         methods: {
+            accountSetting() {
+                this.$parent.profilepick = false;
+                this.$router.push('/account');
+            },
             logout(){
                 this.$parent.authenticated = false;
                 this.$parent.profilepick = false;
@@ -91,25 +95,20 @@ export default {
                                 this.$parent.searchArr.push(data.results[i]);
                             }
                         }
-                        this.$router.push({path:`/search/${type}/${str}`});
+                        if(this.$router.currentRoute.path != `/search/${type}/${str}`){
+                            this.$router.push({path:`/search/${type}/${str}`});
+                        }
                     })
                     .catch(err => console.log(err))
                 }
             }
         },
         computed: {
-            mainlock: function(){
-                if(this.$parent.isadmin && this.$parent.permissions == true || !this.$parent.isadmin && this.$parent.permissions == true){
-                    return false;
+            avatarcheck: function(){
+                if(this.user == null){
+                    return "invader.svg";
                 } else {
-                    return true;
-                }
-            },
-            adminlock: function(){
-                if(this.$parent.isadmin == true){
-                    return false;
-                } else {
-                    return true;
+                    return this.user.avatar;
                 }
             }
         },

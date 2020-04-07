@@ -63,6 +63,6 @@ function login($email, $password){
                 return $users;
             }
     } else {
-        
+        return "User does not exist!";
     }
 }
