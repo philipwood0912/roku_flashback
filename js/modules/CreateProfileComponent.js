@@ -14,11 +14,12 @@ export default {
                         <label>Avatar</label><br>
                         <div class="avatar-wrp">
                             <select v-model="input.avatar" id="avatar-select" name="avatar">
-                                <option class="option" value="default.jpg">Default</option>
+                                <option class="option" value="default.svg">Default</option>
                                 <option class="option" value="invader.svg">Invader</option>
                                 <option class="option" value="heart.svg">Heart</option>
                                 <option class="option" value="pacman.svg">Pac-Man</option>
                                 <option class="option" value="pokeball.svg">Pokeball</option>
+                                <option class="option" value="chicken.svg">Chicken</option>
                                 <option class="option" value="sick.svg">Sick</option>
                                 <option class="option" value="smile.svg">Smile</option>
                             </select>
@@ -36,7 +37,7 @@ export default {
             input: {
                 name: "",
                 section: [],
-                avatar: "default.jpg"
+                avatar: "default.svg"
             },
             message: ""
         }

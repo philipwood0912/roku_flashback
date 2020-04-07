@@ -6,6 +6,7 @@
 @import 'modules/_profilepage';
 @import 'modules/_createprofile';
 @import 'modules/_account';
+@import 'modules/_music';
 .hidden {
     display: none;
 }
@@ -15,4 +16,5 @@ li {
 }
 body{
     font-family:'Oswald',sans-serif;
+    min-width: 768px;
 }

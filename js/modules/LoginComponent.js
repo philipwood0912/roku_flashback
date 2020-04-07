@@ -69,7 +69,9 @@ export default {
                             for(var i=0; i<data.length; i++){
                                 this.$parent.users.push(data[i]);
                             }
-                            //this.$parent.authenticated = true;
+                            this.$cookies.set('currentuser', JSON.stringify(this.$parent.users[0]), 0);
+                            this.$cookies.set('isadmin', this.$parent.users[0].admin, 0);
+                            this.$cookies.set('permissions', this.$parent.users[0].permissions, 0);
                             this.$cookies.set('authenticated', true, 0);
                             this.$cookies.set('users', JSON.stringify(this.$parent.users), 0);
                             this.$router.push('/home');

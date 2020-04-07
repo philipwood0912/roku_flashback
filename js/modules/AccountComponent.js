@@ -14,11 +14,12 @@ export default {
                 <div class="avatar-wrp">
                 <label class="account-label">Profile Avatar</label>
                         <select v-model="input.avatar" name="avatar">
-                            <option class="option" value="default.jpg">Default</option>
+                            <option class="option" value="default.svg">Default</option>
                             <option class="option" value="invader.svg">Invader</option>
                             <option class="option" value="heart.svg">Heart</option>
                             <option class="option" value="pacman.svg">Pac-Man</option>
                             <option class="option" value="pokeball.svg">Pokeball</option>
+                            <option class="option" value="chicken.svg">Chicken</option>
                             <option class="option" value="sick.svg">Sick</option>
                             <option class="option" value="smile.svg">Smile</option>
                         </select>
@@ -96,7 +97,7 @@ export default {
                     formData.append("avatar", this.input.avatar);
                     formData.append("section", this.input.section);
                     formData.append("admin", this.input.admin);
-                    debugger;
+                    
                     let url = `./admin/edit_page.php`;
 
                     fetch(url, {

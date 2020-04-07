@@ -1,5 +1,6 @@
 import ProfileComponent from './ProfileComponent.js';
 import PopupComponent from './PopupComponent.js';
+import MusicPopupComponent from './MusicPopupComponent.js';
 import LeftButton from './LeftButton.js';
 import RightButton from './RightButton.js';
 export default {
@@ -11,12 +12,12 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp kid-border-full">
-                    <popup v-for="(movie, index) in kidsMoviesNew" type="true" :obj="movie" :key="index" :offset="index">
+                    <popup v-for="(movie, index) in kidsMoviesNew" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="1" :array="this.kidsMoviesNew" :color="'#6FB270'"></left>
-                    <right :num="0" :array="this.kidsMoviesNew" :color="'#6FB270'"></right>
+                    <left :num="1" :array="this.kidsMoviesNew" :color="'#6FB270'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right :num="0" :array="this.kidsMoviesNew" :color="'#6FB270'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp kid-border-half">
@@ -24,12 +25,12 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp kid-border-full">
-                    <popup v-for="(show, index) in kidsMoviesOld" type="true" :obj="show" :key="index" :offset="index">
+                    <popup v-for="(show, index) in kidsMoviesOld" :type="true" :obj="show" :key="index" :offset="index">
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="3" :array="this.kidsMoviesOld" :color="'#6FB270'"></left>
-                    <right :num="2" :array="this.kidsMoviesOld" :color="'#6FB270'"></right>
+                    <left :num="3" :array="this.kidsMoviesOld" :color="'#6FB270'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right :num="2" :array="this.kidsMoviesOld" :color="'#6FB270'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp kid-border-half">
@@ -37,12 +38,12 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp kid-border-full">
-                    <popup v-for="(movie, index) in kidsShowsNew" type="false" :obj="movie" :key="index" :offset="index">
+                    <popup v-for="(movie, index) in kidsShowsNew" :type="false" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="1" :array="this.kidsShowsNew" :color="'#6FB270'"></left>
-                    <right :num="0" :array="this.kidsShowsNew" :color="'#6FB270'"></right>
+                    <left :num="5" :array="this.kidsShowsNew" :color="'#6FB270'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right :num="4" :array="this.kidsShowsNew" :color="'#6FB270'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp kid-border-half">
@@ -50,12 +51,24 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp kid-border-full">
-                    <popup v-for="(show, index) in kidsShowsOld" type="false" :obj="show" :key="index" :offset="index">
+                    <popup v-for="(show, index) in kidsShowsOld" :type="false" :obj="show" :key="index" :offset="index">
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="3" :array="this.kidsShowsOld" :color="'#6FB270'"></left>
-                    <right :num="2" :array="this.kidsShowsOld" :color="'#6FB270'"></right>
+                    <left :num="7" :array="this.kidsShowsOld" :color="'#6FB270'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right :num="6" :array="this.kidsShowsOld" :color="'#6FB270'" :marginclass="'movie-tv-arrow-margin'"></right>
+                </div>
+            </div>
+            <div class="title-wrp kid-border-half">
+                <h2 class="title kid-border-less kid-text-color">Kids Music</h2>
+            </div>
+            <div class="content-main">
+                <div class="content-wrp kid-border-full">
+                    <musicpopup v-for="(album, index) in kidsMusic" :obj="album" :key="index" :offset="index"></musicpopup>
+                </div>
+                <div class="content-buttons">
+                    <left :num="9" :array="this.kidsMusic" :color="'#6FB270'" :marginclass="'music-arrow-margin'"></left>
+                    <right :num="8" :array="this.kidsMusic" :color="'#6FB270'" :marginclass="'music-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp kid-border-half">
@@ -71,7 +84,8 @@ export default {
         profiles: ProfileComponent,
         popup: PopupComponent,
         right: RightButton,
-        left: LeftButton
+        left: LeftButton,
+        musicpopup: MusicPopupComponent
     },
     data: function(){
         return {
@@ -79,6 +93,7 @@ export default {
             kidsMoviesOld: [],
             kidsShowsNew: [],
             kidsShowsOld: [],
+            kidsMusic: [],
             showinfo: ""
         }
     },
@@ -104,6 +119,19 @@ export default {
                 }
             })
             .catch(err => console.log(err))
+        },
+        pullKidsMusic(arr){
+            let url = `./admin/music_page.php?section=Kids`;
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                for(var i = 0; i < data.length; i++){
+                    let trackSplit = data[i].tracks.split('^');
+                    data[i].tracks = trackSplit;
+                    arr.push(data[i]);
+                }
+            })
+            .catch(err => console.log(err))
         }
     },
     created: function() {
@@ -111,5 +139,6 @@ export default {
         this.pullKidsMovies(1980, 1999, this.kidsMoviesOld);
         this.pullKidsShows(2000, 2019, this.kidsShowsNew);
         this.pullKidsShows(1980, 1999, this.kidsShowsOld);
+        this.pullKidsMusic(this.kidsMusic);
     }
 }

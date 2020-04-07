@@ -10,15 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald:200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
      <script src="https://unpkg.com/vue-cookies@1.7.0/vue-cookies.js"></script>
     <title>Flashback App</title>
-    <style scoped>
-        @import 'css/reset.css';
-        @import 'css/main.css';
-    </style>
 </head>
 <body>
     <main id="app">

@@ -15,8 +15,8 @@ export default {
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="1" :array="this.moviesTen" :color="'#6c3c97'"></left>
-                    <right :num="0" :array="this.moviesTen" :color="'#6c3c97'"></right>
+                    <left :num="1" :array="this.moviesTen" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right :num="0" :array="this.moviesTen" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -28,8 +28,8 @@ export default {
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="1" :array="this.moviesNine" :color="'#6c3c97'"></left>
-                    <right :num="0" :array="this.moviesNine" :color="'#6c3c97'"></right>
+                    <left :num="3" :array="this.moviesNine" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right :num="2" :array="this.moviesNine" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -41,8 +41,8 @@ export default {
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="1" :array="this.moviesEight" :color="'#6c3c97'"></left>
-                    <right :num="0" :array="this.moviesEight" :color="'#6c3c97'"></right>
+                    <left :num="5" :array="this.moviesEight" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right :num="4" :array="this.moviesEight" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -54,8 +54,8 @@ export default {
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="1" :array="this.moviesSeven" :color="'#6c3c97'"></left>
-                    <right :num="0" :array="this.moviesSeven" :color="'#6c3c97'"></right>
+                    <left :num="7" :array="this.moviesSeven" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right :num="6" :array="this.moviesSeven" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -67,8 +67,8 @@ export default {
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="1" :array="this.moviesSix" :color="'#6c3c97'"></left>
-                    <right :num="0" :array="this.moviesSix" :color="'#6c3c97'"></right>
+                    <left :num="9" :array="this.moviesSix" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right :num="8" :array="this.moviesSix" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">

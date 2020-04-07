@@ -1,0 +1,47 @@
+.music-arrow-margin {
+    margin-top: 145px;
+}
+.music-wrp {
+    position: relative;
+    .music-content{
+        overflow-y: scroll;
+        width: 85vw;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 300px;
+        background-color: rgba(0,0,0,0.8);
+        .music-info {
+            padding: 10px;
+            h2 {
+                color: white;
+                font-size: 35px;
+            }
+            .song-list {
+                li {
+                    color: white;
+                    font-size: 20px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+.popUpButtonsMusic {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    bottom: 0;
+    width: 100%;
+    z-index: 2000;
+    opacity: 0.25;
+    transition: 1s ease;
+    button {
+        font-size: 30px;
+        padding: 5px 20.5px;
+        //border: 2px solid $main-color;
+    }
+}
+.popUpButtonsMusic:hover {
+    opacity: 1;
+}

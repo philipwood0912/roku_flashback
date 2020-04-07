@@ -1,7 +1,7 @@
 export default {
-    props: ['num', 'array', 'color'],
+    props: ['num', 'array', 'color', 'marginclass'],
     template: `
-        <div class="arrowbuttons arrowleft"><button @click.prevent="getScroll(num, $event.path[4].firstChild, array)"><i class="far fa-caret-square-left fa-5x" :style="{color: color}"></i></button></div>
+        <div :class="'arrowbuttons arrowleft ' + marginclass"><button @click.prevent="getScroll(num, $event.path[4].firstChild, array)"><i class="far fa-caret-square-left fa-5x" :style="{color: color}"></i></button></div>
     `,
     data: function() {
         return {

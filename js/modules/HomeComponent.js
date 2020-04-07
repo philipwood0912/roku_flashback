@@ -15,8 +15,8 @@ export default {
                         </popup>
                     </div>
                     <div class="content-buttons">
-                        <left :num="1" :array="this.movies" :color="'#6c3c97'"></left>
-                        <right :num="0" :array="this.movies" :color="'#6c3c97'"></right>
+                        <left :num="1" :array="this.movies" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                        <right :num="0" :array="this.movies" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                     </div>
                 </div>
                 <div class="title-wrp main-border-half">
@@ -28,8 +28,8 @@ export default {
                         </popup>
                     </div>
                     <div class="content-buttons">
-                        <left :num="3" :array="this.tvshows" :color="'#6c3c97'"></left>
-                        <right :num="2" :array="this.tvshows" :color="'#6c3c97'"></right>
+                        <left :num="3" :array="this.tvshows" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                        <right :num="2" :array="this.tvshows" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                     </div>
                 </div>
                 <div class="title-wrp main-border-half">
