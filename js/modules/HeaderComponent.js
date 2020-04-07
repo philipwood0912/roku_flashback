@@ -18,25 +18,20 @@ export default {
                                 <option value="tv">TV Shows</option>
                             </select>
                             <input v-model="searchBar" :placeholder="this.searchmessage">
-                            <button v-on:click="search(searchBar, choice)"><i class="fas fa-search fa-2x" :style="{color: color}"></i></button>
+                            <button class="headerButton" v-on:click="search(searchBar, choice)"><i class="fas fa-search fa-2x" :style="{color: color}"></i></button>
                         </div>
                     </div> 
                     <div v-if="!this.$parent.adminlock">
-                        <button v-on:click="accountSetting()"><i class="fas fa-cog fa-2x" style="color:#6c3c97;"></i></button>
+                        <button class="headerButton" v-on:click="accountSetting()"><i class="fas fa-cog fa-2x" style="color:#6c3c97;"></i></button>
                     </div>
-                    <button v-on:click="profilePicker()"><img class="userIcon" :src="'images/user/' + this.avatarcheck"></button>
-                    <button v-on:click="logout()" id="logout" name="logout"><i class="fas fa-sign-out-alt fa-2x" :style="{color: color}"></i></button>
+                    <button class="headerButton" v-on:click="profilePicker()"><img class="userIcon" :src="'images/user/' + this.avatarcheck"></button>
+                    <button class="headerButton" v-on:click="logout()" id="logout" name="logout"><i class="fas fa-sign-out-alt fa-2x" :style="{color: color}"></i></button>
                 </div>
-                <div class="nav">
-                    <div v-if="!this.$parent.mainlock">
-                        <router-link to="/home">Home</router-link>
-                        <router-link to="/movies">Movies</router-link>
-                        <router-link to="/tv">TV-Shows</router-link>
-                        <router-link to="/music">Music</router-link>
-                    </div>
-                    <div v-else>
-                        <router-link to="/kids">Kids</router-link>
-                    </div>
+                <div class="nav" v-if="!this.$parent.mainlock">
+                    <router-link to="/home">Home</router-link>
+                    <router-link to="/movies">Movies</router-link>
+                    <router-link to="/tv">TV-Shows</router-link>
+                    <router-link to="/music">Music</router-link>
                 </div>
             </div> 
         </div>
@@ -106,7 +101,7 @@ export default {
         computed: {
             avatarcheck: function(){
                 if(this.user == null){
-                    return "invader.svg";
+                    return "default.svg";
                 } else {
                     return this.user.avatar;
                 }

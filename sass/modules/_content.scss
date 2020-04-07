@@ -6,7 +6,7 @@
         .arrowbuttons {
             position: absolute;
             top: 0;
-            margin-top: 210px;
+            // margin-top: 210px;
             transition: .5s ease;
             button{
                 border-radius: 10px;
@@ -15,6 +15,9 @@
         .arrowright {
             right: 0;
         }
+}
+.movie-tv-arrow-margin {
+    margin-top: 210px;
 }
 .content-wrp {
     // padding: 20px 0px;
@@ -101,7 +104,7 @@
     font-weight: 700;
     //margin: 20px 0px 20px 20px;
     transform: translateX(-20px);
-    padding: 10px 0px 10px 20px;
+    padding: 20px 0px 20px 20px;
 }
 .title-wrp {
     transform: translateX(20px);

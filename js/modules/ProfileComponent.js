@@ -50,6 +50,7 @@ export default {
                 this.$router.push('/home').catch(err => {});
                 debugger;
             }
+            debugger;
         },
         navToCreate(){
             this.$router.push('/create');

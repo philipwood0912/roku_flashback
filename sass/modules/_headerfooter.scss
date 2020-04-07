@@ -5,9 +5,9 @@
     justify-content: space-evenly;
     padding: 0px 10px;
 }
-.userIcon {
-    width: 90%;
-}
+// .userIcon {
+//     width: 90%;
+// }
 .logo-image {
     width:300px;
 }
@@ -29,33 +29,59 @@
     justify-content: space-evenly;
     align-items: center;
 }
+.headerButton {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border: 0;
+    outline: 1px inset $main-color; 
+    outline-offset:-1px;
+}
 #search {
-    button {
-        width: 35px;
-        height: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    height: 50px;
+    select {
+        font-size: 18px;
+        background-color: white;
+        width: 95px;
+        color: $main-color;
+        border: 0;
+        outline: 1px inset $main-color; 
+        outline-offset:-1px;
     }
     input {
         font-size: 18px;
+        border: 0;
+        padding: 0px 10px;
+        outline: 1px inset $main-color; 
+        outline-offset:-1px;
     }
 }
+input:focus, button:focus, select:focus {outline:1px inset $main-color; outline-offset: -1px;}
 .main-content {
-    height: 60px;
+    height: 50px;
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-    button{
-        margin-left: 10px;
-        width: 50px;
-        height: 35px;
-    }
+    width: 100%;
 }
 .nav {
+    height: 50px;
+    //width: 522.5px;
     a {
+        display:inline-block;
         text-decoration: none;
-        padding: 0px 10px;
-        margin: 0px 10px;
+        text-align: center;
+        padding: 10px 20px;
         color: $main-color;
         font-size: 30px;
+        transition: .5s ease;
+        font-weight: 700;
+        opacity: .67;
+    }
+    a:hover {
+        opacity: 1;
     }
 }
 footer {
@@ -67,3 +93,4 @@ footer {
         font-weight: 700;
     }
 }
+

@@ -71,15 +71,19 @@ const vm = new Vue({
     computed: {
         mainlock: function(){
             if(this.isadmin == true && this.permissions == true || this.isadmin == false && this.permissions == true){
+            
                 return false;
             } else {
+            
                 return true;
             }
         },
         adminlock: function(){
             if(this.isadmin == true){
+            
                 return false;
             } else {
+            
                 return true;
             }
         }
