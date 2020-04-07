@@ -82,12 +82,7 @@ export default {
         }
     },
     created: function() {
-        // this.pullTopMovies(this.movies);
-        // this.pullTopShows(this.tvshows);
+        this.pullTopMovies(this.movies);
+        this.pullTopShows(this.tvshows);
     },
-    
-    // updated: function() {
-    //     this.$parent.profilepick = this.$cookies.get('profile');
-    //     debugger;
-    // } 
 }

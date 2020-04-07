@@ -10,12 +10,14 @@ import KidsComponent from "./modules/KidsComponent.js";
 import HeaderComponent from "./modules/HeaderComponent.js";
 import FooterComponent from "./modules/FooterComponent.js";
 import SearchComponent from "./modules/SearchComponent.js";
+import AccountComponent from './modules/AccountComponent.js';
 const routes = [
     { path: '/', redirect: { name: "login" } },
     { path: '/login', name: 'login', component: LoginComponent },
     { path: '/signup', name: 'signup', component: SignupComponent },
     { path: '/create', name: 'create', component: CreateProfileComponent },
     { path: '/search/:type/:name', name: 'search', component: SearchComponent, props: true},
+    { path: '/account', name: 'account', component: AccountComponent},
     { path: '/home', name: 'home', component: HomeComponent },
     { path: '/kids', name: 'kids', component: KidsComponent },
     { path: '/movies', name: 'movies', component: MovieComponent },
@@ -36,7 +38,7 @@ const vm = new Vue({
         users: [],
         isadmin: false,
         permissions: false,
-        searchArr: []
+        searchArr: [],
     },
     components: {
         mainhead: HeaderComponent,
@@ -65,7 +67,7 @@ const vm = new Vue({
     // },
     computed: {
         mainlock: function(){
-            if(this.isadmin == true && this.permissions == true || !this.isadmin && this.permissions == true){
+            if(this.isadmin == true && this.permissions == true || this.isadmin == false && this.permissions == true){
                 return false;
             } else {
                 return true;
@@ -83,7 +85,7 @@ const vm = new Vue({
 }).$mount("#app");
 
 router.beforeEach((to, from, next) => {
-    if(to.path !== "/login" && to.path !== '/kids'){
+    if(to.path !== "/login" && to.path !== '/kids' && to.path !== "/home"){
         if (vm.authenticated == false && to.path != '/signup') {
             next('/login');
         } else {

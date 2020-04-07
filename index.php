@@ -1,4 +1,4 @@
-<?php
+<?php 
     require_once 'load.php';
 ?>
 
@@ -23,10 +23,10 @@
 <body>
     <main id="app">
             <div v-if="!mainlock">
-                <mainhead :colorclass="'main-header-border'" :color="'#6c3c97'"></mainhead>
+                <mainhead :colorclass="'main-header-border'" :color="'#6c3c97'" :user="this.user"></mainhead>
             </div>
             <div v-else>
-                <mainhead :colorclass="'kid-header-border'" :color="'#6FB270'"></mainhead>
+                <mainhead :colorclass="'kid-header-border'" :color="'#6FB270'" :user="this.user"></mainhead>
             </div>
         <router-view></router-view>
             <div v-if="!mainlock">

@@ -45,7 +45,6 @@ export default {
             this.$router.push('/signup');
         },
         login() {
-
             if (this.input.email != "" && this.input.password != "") {
                 // fetch the user from the DB
                 // generate the form data
