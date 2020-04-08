@@ -5,75 +5,119 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    #create-wrp {
-        background-color: white;
-        #create-wht {
-            padding: 30px 40px;
-            h2 {
-                font-size: 35px;
-                margin-bottom: 15px;
+    z-index: -1000;
+}
+
+.create-border-one {
+    border: 20px dotted rgba(255, 255, 255, .96);
+}
+.create-border-two {
+    border: 20px dotted rgba(255, 255, 255, .88);
+}
+.create-border-three {
+    border: 20px dotted rgba(255, 255, 255, .80);
+}
+.create-border-four {
+    border: 20px dotted rgba(255, 255, 255, .72);
+}
+.create-border-five {
+    border: 20px dotted rgba(255, 255, 255, .64);
+}
+.create-border-six {
+    border: 20px dotted rgba(255, 255, 255, .56);
+}
+.create-border-seven {
+    border: 20px dotted rgba(255, 255, 255, .48);
+}
+.create-border-eight {
+    border: 20px dotted rgba(255, 255, 255, .40);
+}
+.create-border-nine {
+    border: 20px dotted rgba(255, 255, 255, .32);
+}
+.create-border-ten {
+    border: 20px dotted rgba(255, 255, 255, .24);
+}
+.create-border-eleven {
+    border: 20px dotted rgba(255, 255, 255, .16);
+}
+.create-border-twelve {
+    border: 20px dotted rgba(255, 255, 255, .08);
+}
+
+#create-wrp {
+    background-color: white;
+    border-radius:20px;
+    padding: 40px 60px;
+    #create-wht {
+        h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: $main-color;
+            font-weight: bolder;
+        }
+        #create-form {
+            label {
                 color: $main-color;
-                font-weight: bolder;
+                font-size: 25px;
+                margin-bottom: 20px;
             }
-            #create-form {
-                label {
-                    color: $main-color;
-                    font-size: 25px;
-                    margin-bottom: 20px;
+            input {
+                width: 300px;
+                padding: 5px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                font-size: 20px;
+                font-weight: lighter;
+            }
+            button {
+                margin-top: 20px;
+                margin-bottom: 10px;
+                color: $main-color;
+                font-size: 22px;
+                padding: 5px 10px;
+                transition: .3s ease;
+            }
+            button:hover {
+                background-color: rgba(108, 60, 151, 0.2);
+            }
+            .chk-top {
+                margin-top: 10px;
+            }
+            .check-wrp {
+                display: flex;
+                flex-direction: row;
+                justify-items: baseline;
+                justify-content: space-between;
+                align-items: center;
+                width: 150px;
+                .check {
+                    width: 25px;
+                    height: 25px;
+                    margin-left: 20px;
                 }
-                input {
-                    width: 300px;
-                    padding: 5px;
-                    margin-top: 5px;
-                    margin-bottom: 10px;
+                .chklabel {
                     font-size: 20px;
-                    font-weight: lighter;
+                    margin-bottom: 0px;
                 }
-                button {
-                    margin-top: 20px;
-                    margin-bottom: 10px;
-                    color: $main-color;
-                    font-size: 22px;
-                    padding: 5px 10px;
+            }
+            .avatar-wrp {
+                display: flex;
+                flex-direction: row;
+                justify-items: baseline;
+                align-items: center;
+                margin-top: 5px;
+                select {
+                    height: 30px;
+                    width: 100px;
                 }
-                .chk-top {
-                    margin-top: 10px;
+                .option {
+                    font-size: 25px;
                 }
-                .check-wrp {
-                    display: flex;
-                    flex-direction: row;
-                    justify-items: baseline;
-                    justify-content: space-between;
-                    align-items: center;
-                    width: 150px;
-                    .check {
-                        width: 25px;
-                        height: 25px;
-                        margin-left: 20px;
-                    }
-                    .chklabel {
-                        font-size: 20px;
-                        margin-bottom: 0px;
-                    }
-                }
-                .avatar-wrp {
-                    display: flex;
-                    flex-direction: row;
-                    justify-items: baseline;
-                    align-items: center;
-                    margin-top: 5px;
-                    select {
-                        height: 30px;
-                        width: 100px;
-                    }
-                    .option {
-                        font-size: 25px;
-                    }
-                    img {
-                        margin-left: 20px;
-                        width: 40px;
-                        height: 40px;
-                    }
+                img {
+                    margin-left: 20px;
+                    width: 40px;
+                    height: 40px;
                 }
             }
         }

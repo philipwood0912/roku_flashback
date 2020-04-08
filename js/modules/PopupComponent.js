@@ -42,30 +42,33 @@ export default {
         }
     },
     methods: {
+        // popup function takes 2 parameters vue event, index
         showInfo(event, index){
+            // variable declaration
             let poster = event.currentTarget.firstChild,
                 popup = poster.children[1],
                 buttondiv = this.$el.parentElement.parentElement.lastChild,
                 buttons = [buttondiv.firstChild, buttondiv.lastChild],
-                slide = this.$el.parentElement;
-            
-                debugger;
+                slide = this.$el.parentElement;      
+                
             if(this.show === true){
+                // resets popup on click - scrolls poster to original location
                 let scroll = -300 * index;
-                    slide.scrollLeft = scroll;
-                    this.show = false;
-                    debugger;
+                slide.scrollLeft = scroll;
+                this.show = false;     
             } else {
+                // poster scrolls over, popup is shown
                 let scroll = 300 * index;
                 slide.scrollLeft = scroll;
-                this.show = true;
-                debugger;
+                this.show = true;      
             }
+            // toggle button opacity
             buttons.forEach(button => {
                 button.classList.toggle('button-opacity');
             });
+            // toggle popup z-index
             popup.classList.toggle('add-zindex');
-            debugger;
+            
         },
     }
 }

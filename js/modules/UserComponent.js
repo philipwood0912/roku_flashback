@@ -1,6 +1,5 @@
 export default {
     props: ['liveuser'],
-
     template: `
         <div class="profile-con" @click="$parent.navToUserHome(liveuser)">
             <div class="profile-body" @mouseover="show = true">
@@ -17,11 +16,15 @@ export default {
             show: false
         }
     },
+    //set newprofile data as true if avatar is empty.
+    // pointless now though, if user logs in without a profile created
+    // it auto redirects them to profile create page
     created: function() {
         if(this.liveuser.avatar == ""){
             this.$parent.newProfile = true;
         }
     },
+    // animation hooks - vue tranistions are great
     methods: {
         beforeEnter(el) {
             el.classList.add('moveup');

@@ -16,6 +16,7 @@ export default {
         }
     },
     methods: {
+        // animation hooks
         beforeEnter(el) {
             el.classList.add('moveup');
         },

@@ -1,16 +1,19 @@
 .content-main {
     width: 100vw;
-    //background-color: $main-color;
-    overflow: hidden;
     position: relative;
         .arrowbuttons {
             position: absolute;
             top: 0;
-            // margin-top: 210px;
             transition: .5s ease;
-            button{
+            background-color: white;
+            border-radius: 10px;
+            button {
                 border-radius: 10px;
+                transition: .3s ease;
             }
+            // button:hover{
+            //     background-color: rgba(108, 60, 151, 0.2);
+            // }
         }
         .arrowright {
             right: 0;
@@ -20,7 +23,6 @@
     margin-top: 210px;
 }
 .content-wrp {
-    // padding: 20px 0px;
     overflow: hidden;
     display: flex;
     flex-direction: row;
@@ -30,12 +32,10 @@
 .content {
     display: flex;
     flex-direction: column;
-    //margin-left: 20px;
     .poster {
         width: 300px;
         height: 450px;
         position: relative;
-        //overflow: hidden;
         img {
             height: 450px;
         }
@@ -45,13 +45,11 @@
             left: 300px;
             overflow: hidden;
             top: 0;
-            //background-color: rgba(108, 60, 151, 0.3);
             .poster-info {
                 position: relative;
                 height: 450px;
                 width: 85vw;
                 background-color: rgba(0,0,0,0.8);
-                //opacity: 0;
                 img {
                     height: 450px;
                 }
@@ -62,7 +60,6 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-end;
-                    //pointer-events: none;
                     h2 {
                         padding: 10px;
                         border-radius: 0px 50px 0px 0px;
@@ -102,13 +99,11 @@
 .title {
     font-size: 50px;
     font-weight: 700;
-    //margin: 20px 0px 20px 20px;
     transform: translateX(-20px);
     padding: 20px 0px 20px 20px;
 }
 .title-wrp {
     transform: translateX(20px);
-
 }
 
 .popup-enter-active, .popup-leave-active {
@@ -146,16 +141,22 @@
 .popUpButtons:hover {
     opacity: 1;
 }
-// .main-border-header {
 
-// }
+.main-popup {
+    border-bottom: 5px solid $main-color;
+    border-top: 5px solid $main-color;
+}
+.kid-popup {
+    border-bottom: 5px solid $kid-color;
+    border-top: 5px solid $kid-color;
+}
 .main-color {
     background-color: $main-color;
 }
 .main-text-color {
     color: $main-color;
 }
-.main-kid {
+.kid-color {
     background-color: $kid-color;
 }
 .kid-text-color {

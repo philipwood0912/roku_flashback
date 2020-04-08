@@ -11,11 +11,11 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp main-border-full">
-                    <musicpopup v-for="(album, index) in this.music" :obj="album" :key="index" :offset="index"></musicpopup>
+                    <musicpopup class="main-popup" v-for="(album, index) in this.music" :obj="album" :key="index" :offset="index"></musicpopup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="1" :array="this.music" :color="'#6c3c97'" :marginclass="'music-arrow-margin'"></left>
-                    <right :num="0" :array="this.music" :color="'#6c3c97'" :marginclass="'music-arrow-margin'"></right>
+                    <left @hover="$parent.hovEff" :num="1" :match="0" :array="this.music" :color="'#6c3c97'" :marginclass="'music-arrow-margin'"></left>
+                    <right @hover="$parent.hovEff" :num="0" :match="1" :array="this.music" :color="'#6c3c97'" :marginclass="'music-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -39,12 +39,17 @@ export default {
         }
     },
     methods: {
+        // pull music function for general
+        // passed as a GET section = General
         pullMusic(arr){
             let url = `./admin/music_page.php?section=General`;
             fetch(url)
             .then(res => res.json())
             .then(data => {
+                // music track have to be split into an array for display purposes
                 for(var i = 0; i < data.length; i++){
+                    // on each iteration, split the track on specific character
+                    // and update the data property, then push to array
                     let trackSplit = data[i].tracks.split('^');
                     data[i].tracks = trackSplit;
                     arr.push(data[i]);
@@ -54,6 +59,7 @@ export default {
         }
     },
     created: function() {
+        // on creation pull music
         this.pullMusic(this.music);
     }
 }

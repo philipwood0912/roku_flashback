@@ -5,9 +5,12 @@
     justify-content: space-evenly;
     padding: 0px 10px;
 }
-// .userIcon {
-//     width: 90%;
-// }
+.main-buttons-hover {
+    background-color: rgba(108, 60, 151, 0.2);
+}
+.kid-buttons-hover {
+    background-color: rgba(111, 178, 112, 0.2);
+}
 .logo-image {
     width:300px;
 }
@@ -36,7 +39,11 @@
     border: 0;
     outline: 1px inset $main-color; 
     outline-offset:-1px;
+    transition: .3s ease;
 }
+// .headerButton:hover {
+//     background-color: rgba(108, 60, 151, 0.2);
+// }
 #search {
     display: flex;
     flex-direction: row;
@@ -45,11 +52,12 @@
     select {
         font-size: 18px;
         background-color: white;
-        width: 95px;
+        width: 110px;
         color: $main-color;
         border: 0;
         outline: 1px inset $main-color; 
         outline-offset:-1px;
+        text-indent: 5px;
     }
     input {
         font-size: 18px;
@@ -68,7 +76,6 @@ input:focus, button:focus, select:focus {outline:1px inset $main-color; outline-
 }
 .nav {
     height: 50px;
-    //width: 522.5px;
     a {
         display:inline-block;
         text-decoration: none;

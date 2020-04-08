@@ -20,7 +20,7 @@ export default {
                         <label>Confirm Password</label><br>
                         <input v-model="input.ConPassword" name="conpassword" type="password"><br>
                         <button @click.prevent="signup()" name="submit">Sign-Up</button>
-                        <button @click.prevent="goback()">Back <i class="fas fa-arrow-circle-right"></i></button>
+                        <button @click.prevent="goback()"><i class="fas fa-arrow-circle-left"></i> Back</button>
                     </form>
                 </div>
             </div>
@@ -39,11 +39,17 @@ export default {
             message: ""
         }
     },
+    created: function() {
+        // on create set profilepick to false
+        // incase reset on browser refresh
+        this.$parent.profilepick = false;
+    },
     methods: {
+        // go back function
         goback(){
-            this.$router.push('/');
-            debugger;
+            this.$router.back();      
         },
+        //signup function, new account is created and message is returned
         signup() {
             if (this.input.Fname != "" && this.input.Lname != "" && this.input.Email != "" && this.input.ConEmail != "" && this.input.Password != "" && this.input.ConPassword != "") {
                 if(this.input.Email === this.input.ConEmail || this.input.Password === this.input.ConPassword){

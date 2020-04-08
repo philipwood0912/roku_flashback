@@ -1,34 +1,58 @@
 export default {
     template: `
         <div id="create-bdy">
-            <div id="create-wrp">
-                <div id="create-wht">
-                    <h2>CREATE NEW USER</h2>
-                    <h3>{{this.message}}</h3>
-                    <form id="create-form">
-                        <label>Profile Name</label><br>
-                        <input v-model="input.name" name="name" type="text" value=""><br>
-                        <label>Profile Setting</label><br>
-                        <div class="check-wrp chk-top"><input class="check" type="checkbox" value="0" v-model="input.section"><label class="chklabel">Kids Only</label></div>
-                        <div class="check-wrp"><input class="check" type="checkbox" value="1" v-model="input.section"><label class="chklabel">General</label></div>
-                        <label>Avatar</label><br>
-                        <div class="avatar-wrp">
-                            <select v-model="input.avatar" id="avatar-select" name="avatar">
-                                <option class="option" value="default.svg">Default</option>
-                                <option class="option" value="invader.svg">Invader</option>
-                                <option class="option" value="heart.svg">Heart</option>
-                                <option class="option" value="pacman.svg">Pac-Man</option>
-                                <option class="option" value="pokeball.svg">Pokeball</option>
-                                <option class="option" value="chicken.svg">Chicken</option>
-                                <option class="option" value="sick.svg">Sick</option>
-                                <option class="option" value="smile.svg">Smile</option>
-                            </select>
-                            <img :src="'images/user/' + input.avatar" alt="avatar"><br>
-                        </div>
-                        <button v-on:click.prevent="createUser()" name="create">Create Profile</button>
-                        <button @click.prevent="backHome()">Back <i class="fas fa-arrow-circle-right"></i></button>
-                    </form>
+            <div class="create-border-twelve">
+            <div class="create-border-eleven">
+            <div class="create-border-ten">
+            <div class="create-border-nine">
+            <div class="create-border-eight">
+            <div class="create-border-seven">
+            <div class="create-border-six">
+            <div class="create-border-five">
+            <div class="create-border-four">
+            <div class="create-border-three">
+            <div class="create-border-two">
+            <div class="create-border-one">
+                <div id="create-wrp">
+                    <div id="create-wht">
+                        <h2>Create New Profile</h2>
+                        <h3>{{this.message}}</h3>
+                        <form id="create-form">
+                            <label>Profile Name</label><br>
+                            <input v-model="input.name" name="name" type="text" value=""><br>
+                            <label>Profile Setting</label><br>
+                            <div class="check-wrp chk-top"><input class="check" type="checkbox" value="0" v-model="input.section"><label class="chklabel">Kids Only</label></div>
+                            <div class="check-wrp"><input class="check" type="checkbox" value="1" v-model="input.section"><label class="chklabel">General</label></div>
+                            <label>Avatar</label><br>
+                            <div class="avatar-wrp">
+                                <select v-model="input.avatar" id="avatar-select" name="avatar">
+                                    <option class="option" value="default.svg">Default</option>
+                                    <option class="option" value="invader.svg">Invader</option>
+                                    <option class="option" value="heart.svg">Heart</option>
+                                    <option class="option" value="pacman.svg">Pac-Man</option>
+                                    <option class="option" value="pokeball.svg">Pokeball</option>
+                                    <option class="option" value="chicken.svg">Chicken</option>
+                                    <option class="option" value="sick.svg">Sick</option>
+                                    <option class="option" value="smile.svg">Smile</option>
+                                </select>
+                                <img :src="'images/user/' + input.avatar" alt="avatar"><br>
+                            </div>
+                            <button v-on:click.prevent="createUser()" name="create">Create Profile</button>
+                            <button @click.prevent="backHome()"><i class="fas fa-arrow-circle-left"></i> Back</button>
+                        </form>
+                    </div>
                 </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
         </div>
     `,
@@ -42,19 +66,27 @@ export default {
             message: ""
         }
     },
+    created: function() {
+        // on created set profilepick to false and reset users array
+        // with current cookies info
+        this.$parent.profilepick = false;
+        let userArr = JSON.parse(this.$cookies.get('users'));
+        for(var i = 0; i < userArr.length; i++){
+            this.$parent.users.push(userArr[i]);
+        }
+    },
     methods: {
+        // back button function
         backHome(){
             this.$router.back();
         },
+        // create profile function
         createUser(){
             if (this.input.name != "" && this.input.section.length > 0 && this.input.avatar != "") {
+                // if more then one checkbox in section is checked, set message
                 if(this.input.section.length > 1){
                     this.message = "You can't pick both..";
-                    
                 } else {
-                    
-                    // fetch the user from the DB
-                    // generate the form data
                     let formData = new FormData();
                     formData.append("link", this.$parent.users[0].id);
                     formData.append("name", this.input.name);
@@ -69,19 +101,24 @@ export default {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            if (data === null || typeof data !== "object") { // means that we're not getting a user object back
+                            if (data === null || typeof data !== "object") { 
                                 console.warn(data);
-                                // just for testing
                                 alert("creation failed, please try again");
                             } else {
+                                // if users array is less than or equal to one then
+                                // it is a new profile and will be handle as such
                                 if(this.$parent.users.length <= 1){
+                                    // set users[0] pname, permissions, avatar, admin
                                     this.$parent.users[0].pname = data.pname;
                                     this.$parent.users[0].permissions = data.section;
                                     this.$parent.users[0].avatar = data.avatar;
                                     this.$parent.users[0].admin = data.admin;
-                                    this.message = "New profile created!";
-                                    
+                                    // reset users cookie as new profile has been created and route to home
+                                    this.$cookies.set('users', JSON.stringify(this.$parent.users), 0);
+                                    this.$router.push('/home');
+                                // else this is not their first profile and well be handle as such    
                                 } else {
+                                    // create object with info to be added to users array
                                     let obj = {
                                         id: this.$parent.users[0].id,
                                         fname: this.$parent.users[0].fname,
@@ -90,7 +127,10 @@ export default {
                                         avatar: data.avatar,
                                         admin: data.admin,
                                     };
+                                    // push to users array
                                     this.$parent.users.push(obj);
+                                    // reset users cookie with new info and set message
+                                    this.$cookies.set('users', JSON.stringify(this.$parent.users), 0);
                                     this.message = "New profile created!";
                                     
                                 }

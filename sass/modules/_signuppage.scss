@@ -40,6 +40,10 @@
                     color: $main-color;
                     font-size: 22px;
                     padding: 5px 10px;
+                    transition: .3s ease;
+                }
+                button:hover {
+                    background-color: rgba(108, 60, 151, 0.2);
                 }
             }
         }
