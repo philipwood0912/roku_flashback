@@ -1,7 +1,7 @@
 export default {
     props: ['num', 'match', 'array', 'color', 'marginclass'],
     template: `
-        <div :class="'arrowbuttons arrowleft ' + marginclass"><button @mouseover="$emit('hover', $el.firstChild)" @mouseout="$emit('hover', $el.firstChild)" @click.prevent="getScroll($event.path[4].firstChild, array)"><i class="far fa-caret-square-left fa-5x" :style="{color: color}"></i></button></div>
+        <div :class="'arrowbuttons arrowleft ' + marginclass"><button @mouseover="$emit('hover', $el.firstChild)" @mouseout="$emit('hover', $el.firstChild)" @click.prevent="getScroll(array)"><i class="far fa-caret-square-left fa-5x" :style="{color: color}"></i></button></div>
     `,
     data: function() {
         return {
@@ -24,7 +24,8 @@ export default {
         }
     },
     methods: {
-        getScroll(slide, array){
+        getScroll(array){
+            let slide = this.$el.offsetParent.firstChild;
             // if clicked = 0 do nothing
             if(this.clicked !== 0){
                 if(this.clicked >= 1){
