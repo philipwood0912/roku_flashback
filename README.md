@@ -34,7 +34,7 @@ Navigate to phpMyAdmin in MAMP/WAMP and import database/db_flashback.sql into a 
 
 Or if you're a legend, install using command line.
 
-####Example: Mac
+#### Example: Mac
 Connect to mysql:
 ```
 $ /Applications/MAMP/Library/bin/mysql -uroot -proot
