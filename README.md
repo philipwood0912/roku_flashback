@@ -22,6 +22,8 @@ A video and audio application designed for Roku - browse Movies, TV Shows and Mu
 
 Web browser and MAMP/WAMP installed on computer.
 
+----------
+
 ## Getting Started
 
 Change directories to either htdocs(Mac) or www(Windows) within MAMP/WAMP and clone the repo!
