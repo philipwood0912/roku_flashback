@@ -68,12 +68,15 @@ export default {
     },
     created: function() {
         // on created set profilepick to false and reset users array
-        // with current cookies info
+        // with current cookies info if array length is < 1
         this.$parent.profilepick = false;
         let userArr = JSON.parse(this.$cookies.get('users'));
-        for(var i = 0; i < userArr.length; i++){
-            this.$parent.users.push(userArr[i]);
+        if(this.$parent.users.length < 1){
+            for(var i = 0; i < userArr.length; i++){
+                this.$parent.users.push(userArr[i]);
+            }
         }
+        
     },
     methods: {
         // back button function
@@ -101,13 +104,14 @@ export default {
                     })
                         .then(res => res.json())
                         .then(data => {
+                            
                             if (data === null || typeof data !== "object") { 
                                 console.warn(data);
                                 alert("creation failed, please try again");
                             } else {
-                                // if users array is less than or equal to one then
+                                // if users[0] pname is empty
                                 // it is a new profile and will be handle as such
-                                if(this.$parent.users.length <= 1){
+                                if(this.$parent.users[0].pname == ""){
                                     // set users[0] pname, permissions, avatar, admin
                                     this.$parent.users[0].pname = data.pname;
                                     this.$parent.users[0].permissions = data.section;
@@ -115,6 +119,7 @@ export default {
                                     this.$parent.users[0].admin = data.admin;
                                     // reset users cookie as new profile has been created and route to home
                                     this.$cookies.set('users', JSON.stringify(this.$parent.users), 0);
+                                    
                                     this.$router.push('/home');
                                 // else this is not their first profile and well be handle as such    
                                 } else {
@@ -130,6 +135,7 @@ export default {
                                     // push to users array
                                     this.$parent.users.push(obj);
                                     // reset users cookie with new info and set message
+                                    
                                     this.$cookies.set('users', JSON.stringify(this.$parent.users), 0);
                                     this.message = "New profile created!";
                                     

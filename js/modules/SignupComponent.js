@@ -67,7 +67,7 @@ export default {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            if (data === null || typeof data !== "string") { // means that we're not getting a user object back
+                            if (data === null || typeof data !== "string") { 
                                 console.warn(data);
                                 alert("creation failed, please try again");
                             } else {
