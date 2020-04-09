@@ -69,6 +69,7 @@ export default {
                         } else {
                             for(var i=0; i<data.length; i++){
                                 this.$parent.users.push(data[i]);
+                                debugger;
                             }
                             // set vue authenication
                             this.$parent.authenticated = true;
