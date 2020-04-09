@@ -76,7 +76,11 @@ export default {
             .then(res => res.json())
             .then(data => {
                 for(var i=0; i<data.results.length; i++){
-                    arr.push(data.results[i]);
+                    if(data.results[i].poster_path == null){
+                        continue;
+                    } else {
+                        arr.push(data.results[i]);
+                    }
                 }
             })
             .catch(err => console.log(err))

@@ -2,7 +2,7 @@ export default {
     props: ['num', 'match', 'array', 'color', 'marginclass'],
     template: `
         <div :class="'arrowbuttons arrowright ' + marginclass">
-            <button @mouseover="$emit('hover', $el.firstChild)" @mouseout="$emit('hover', $el.firstChild)" @click.prevent="getScroll($event.path[4].firstChild, array)">
+            <button @mouseover="$emit('hover', $el.firstChild)" @mouseout="$emit('hover', $el.firstChild)" @click.prevent="getScroll(array)">
                 <i class="far fa-caret-square-right fa-5x" :style="{color: color}"></i>
             </button>
         </div>
@@ -29,8 +29,9 @@ export default {
     },
     methods: {
         // scroll function for right button
-        // takes 2 parameters slide - div to scroll, array - the array to be mutated
-        getScroll(slide, array){
+        // takes 1 parameter: array - the array to be mutated
+        getScroll(array){
+            let slide = this.$el.offsetParent.firstChild;
             // clicked + 1, clickedLink + 1
             this.clicked += 1;
             this.clickedLink.clicked += 1;
@@ -42,7 +43,9 @@ export default {
                 // and is added to end of array
                 var firstItem = array.shift();
                 array.push(firstItem);
+                debugger;
             }
+            debugger;
         }
     } 
 
