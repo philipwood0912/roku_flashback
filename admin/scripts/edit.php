@@ -2,6 +2,7 @@
 
     function editProfile($id, $name, $oldname, $avatar, $permissions, $admin){
         $pdo = Database::getInstance()->getConnection();
+        // update profile query - conditions are link and original name must match
         $update_query = 'UPDATE tbl_profiles SET Profile_Name =:name,';
         $update_query .= ' Profile_Permissions =:permission, Profile_Avatar =:avatar,';
         $update_query .= ' Profile_Admin =:admin WHERE Profile_Link =:id AND Profile_Name =:oldname';
@@ -16,6 +17,7 @@
                 ':id'=>$id
             )
         );
+        // return array with original parameters
         $newprofile = array();
         $newprofile['pname'] = $name;
         $newprofile['avatar'] = $avatar;

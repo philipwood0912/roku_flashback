@@ -45,45 +45,53 @@ const vm = new Vue({
         mainfoot: FooterComponent
     },
     methods: {
+        // poster url function
         getImgUrl(path){
             return "https://image.tmdb.org/t/p/w300" + path + "";
         },
+        //backdrop url function
         getBckUrl(path){
             return "https://image.tmdb.org/t/p/w780" + path + "";
+        },
+        // hover effect function for buttons / arrows
+        hovEff(target){
+            if(this.$router.currentRoute.path != '/kids'){
+                target.classList.toggle('main-buttons-hover');
+            } else {
+                target.classList.toggle('kid-buttons-hover');
+            }
         },
         
     },
     created: function() {
+        // set vue data with cookies on creation - no data lost on page refresh
         this.authenticated = this.$cookies.get('authenticated');
         this.profilepick = this.$cookies.get('profile');
         this.isadmin = this.$cookies.get('isadmin');
         this.permissions = this.$cookies.get('permissions');
         this.user = this.$cookies.get('currentuser');
+        // route to home on creation if currentRoute is search route
         if(this.$router.currentRoute.matched[0].path == "/search/:type/:name"){
             this.$router.push('/home');
         }
     },
-    // created: function(){
-    //     if(this.authenticated === false && this.$router.currentRoute.path != "/login"){
-    //         this.$router.push('/login');
-    //     }
-    // },
+    // computed funcitons for admin / permissions handling
     computed: {
+        // mainlock is used for determining if profile is kids or general
         mainlock: function(){
+            // if admin and permissions are true or admin is false and permissions are true return true
             if(this.isadmin == true && this.permissions == true || this.isadmin == false && this.permissions == true){
-            
                 return false;
             } else {
-            
+                // else return false to view kids
                 return true;
             }
         },
+        // adminlock is used to determine if profile is admin or not - if admin return true else return false
         adminlock: function(){
-            if(this.isadmin == true){
-            
+            if(this.isadmin == true){       
                 return false;
-            } else {
-            
+            } else {         
                 return true;
             }
         }

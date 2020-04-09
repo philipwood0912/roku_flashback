@@ -2,7 +2,7 @@
 
 function login($email, $password){
     $pdo = Database::getInstance()->getConnection();
-    // query chekcing user existance
+    // query checking user existance
     $check_exist_query = 'SELECT COUNT(*) FROM `tbl_users` WHERE User_Email =:email';
     $user_set = $pdo->prepare($check_exist_query);
     $user_set->execute(
@@ -12,7 +12,7 @@ function login($email, $password){
     );
 
     if($user_set->fetchColumn()>0){
-            //check if match
+        //if user exists run select query with user email and password as conditions
             $check_match_query = 'SELECT tbl_users.ID, tbl_users.F_Name, tbl_users.User_Email, tbl_profiles.Profile_Name,';
             $check_match_query .= ' tbl_profiles.Profile_Permissions, tbl_profiles.Profile_Avatar, tbl_profiles.Profile_Admin';
             $check_match_query .= ' FROM tbl_users INNER JOIN tbl_profiles ON tbl_users.ID = tbl_profiles.Profile_Link';
@@ -24,8 +24,8 @@ function login($email, $password){
                     ':password'=>$password
                 )
             );
+            // pull user info and add to array
             $users = array();
-            //Updating user ip login date and login time
             while($founduser = $user_match->fetch(PDO::FETCH_ASSOC)){
                 $user = array();
                 $user['id'] = $founduser['ID'];
@@ -36,10 +36,12 @@ function login($email, $password){
                 $user['admin'] = $founduser['Profile_Admin'];
                 $users[] = $user;
             }
-
+            // if users is not empty return users
             if(!empty($users)){
                 return $users;
             } else {
+                // else it means that the user has no profiles yet
+                // run another query grabbing basic info about account
                 $check_match_query = 'SELECT ID, F_Name FROM tbl_users WHERE User_Email =:email AND User_Pass =:password';
                 $user_match = $pdo->prepare($check_match_query);
                 $user_match->execute(
@@ -48,8 +50,8 @@ function login($email, $password){
                         ':password'=>$password
                     )
                 );
+                // add info pulled plus info that will be needed and edited on client side to array
                 $users = array();
-                //Updating user ip login date and login time
                 while($founduser = $user_match->fetch(PDO::FETCH_ASSOC)){
                     $user = array();
                     $user['id'] = $founduser['ID'];

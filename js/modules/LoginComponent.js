@@ -31,7 +31,9 @@ export default {
     },
 
     created: function(){
+        //login creation - set profilepick as false
         this.$parent.profilepick = false;
+        // reset vue cookies default values
         this.$cookies.set('authenticated', false, 0);
         this.$cookies.set('users', [], 0);
         this.$cookies.set('profile', false, 0);
@@ -41,13 +43,13 @@ export default {
     },
 
     methods: {
+        // route to signup page
         signup() {
             this.$router.push('/signup');
         },
+        // login function
         login() {
             if (this.input.email != "" && this.input.password != "") {
-                // fetch the user from the DB
-                // generate the form data
                 let formData = new FormData();
 
                 formData.append("email", this.input.email);
@@ -63,20 +65,26 @@ export default {
                     .then(data => {
                         if (data.length === 0 || data === null || typeof data !== "object") { // means that we're not getting a user object back
                             console.warn(data);
-                            // just for testing
                             alert("authentication failed, please try again");
                         } else {
                             for(var i=0; i<data.length; i++){
                                 this.$parent.users.push(data[i]);
                             }
+                            // set vue authenication
+                            this.$parent.authenticated = true;
+                            // set cookies values on successful login
                             this.$cookies.set('currentuser', JSON.stringify(this.$parent.users[0]), 0);
                             this.$cookies.set('isadmin', this.$parent.users[0].admin, 0);
                             this.$cookies.set('permissions', this.$parent.users[0].permissions, 0);
                             this.$cookies.set('authenticated', true, 0);
                             this.$cookies.set('users', JSON.stringify(this.$parent.users), 0);
-                            this.$router.push('/home');
-                            debugger;
-
+                            // if user logging in has no profile made, push to create profile page
+                            // else push to home page
+                            if(this.$parent.users[0].pname == ""){
+                                this.$router.push('/create');
+                            } else {
+                                this.$router.push('/home');
+                            }
                         }
                     })
                     .catch(function (error) {

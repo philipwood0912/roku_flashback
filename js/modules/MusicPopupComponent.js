@@ -27,29 +27,28 @@ export default {
         }
     },
     methods: {
+        // same as normal popup function - could add to vue root
+        // for reusability as the template is the only thing that changed
         showInfo(event, index){
             let poster = event.currentTarget,
                 popup = poster.children[1],
                 buttondiv = this.$el.parentElement.parentElement.lastChild,
                 buttons = [buttondiv.firstChild, buttondiv.lastChild],
-                slide = this.$el.parentElement;
-                debugger;
+                slide = this.$el.parentElement;          
             if(this.show === true){
                 let scroll = -300 * index;
                 slide.scrollLeft = scroll;
-                this.show = false;
-                debugger;
+                this.show = false;             
             } else {
                 let scroll = 300 * index;
                 slide.scrollLeft = scroll;
-                this.show = true;
-                debugger;
+                this.show = true;           
             }
             buttons.forEach(button => {
                 button.classList.toggle('button-opacity');
             });
             popup.classList.toggle('add-zindex');
-            debugger;
+            
         },
     }
 }

@@ -15,8 +15,8 @@ export default {
                         </popup>
                     </div>
                     <div class="content-buttons">
-                        <left :num="1" :array="this.$parent.searchArr" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
-                        <right :num="0" :array="this.$parent.searchArr" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
+                        <left :num="1" :match="0" :array="this.$parent.searchArr" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                        <right :num="0" :match="1" :array="this.$parent.searchArr" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                     </div>
                 </div>
                 <div class="title-wrp main-border-half">
@@ -35,6 +35,8 @@ export default {
         left: LeftButton
     },
     computed: {
+        // computed property for :type prop passed to popup component
+        // take route param and either returns true for movie and false for tv
         typeTest: function(){
             if(this.$route.params.type === "movie"){
                 return true;

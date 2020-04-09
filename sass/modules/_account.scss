@@ -13,7 +13,7 @@
         .account-title{
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
+            justify-content: center;
             width: 100%;
             h2 {
                 color: $main-color;
@@ -21,10 +21,14 @@
                 font-weight: 700;
             }
             .account-back {
-                width: 125px;
                 color: $main-color;
                 font-size: 22px;
-                padding: 5px 10px;
+                padding: 10px;
+                transition: .3s ease;
+                margin-left: 15px;
+            }
+            .account-back:hover {
+                background-color: rgba(108, 60, 151, 0.2);
             }
             
         }
@@ -32,9 +36,47 @@
             padding: 20px 0px;
             display: flex;
             flex-direction: row;
+            justify-content: center;
         }
     }
 }
+.account-border-one {
+    border: 20px dashed rgba(255, 255, 255, .96);
+}
+.account-border-two {
+    border: 20px dashed rgba(255, 255, 255, .88);
+}
+.account-border-three {
+    border: 20px dashed rgba(255, 255, 255, .80);
+}
+.account-border-four {
+    border: 20px dashed rgba(255, 255, 255, .72);
+}
+.account-border-five {
+    border: 20px dashed rgba(255, 255, 255, .64);
+}
+.account-border-six {
+    border: 20px dashed rgba(255, 255, 255, .56);
+}
+.account-border-seven {
+    border: 20px dashed rgba(255, 255, 255, .48);
+}
+.account-border-eight {
+    border: 20px dashed rgba(255, 255, 255, .40);
+}
+.account-border-nine {
+    border: 20px dashed rgba(255, 255, 255, .32);
+}
+.account-border-ten {
+    border: 20px dashed rgba(255, 255, 255, .24);
+}
+.account-border-eleven {
+    border: 20px dashed rgba(255, 255, 255, .16);
+}
+.account-border-twelve {
+    border: 20px dashed rgba(255, 255, 255, .08);
+}
+
 .account-form {
     margin: 0 auto;
     h3 {
@@ -103,7 +145,11 @@
         color: $main-color;
         font-size: 22px;
         padding: 5px 10px;
-    }       
+        transition: .3s ease;
+    } 
+    button:hover {
+        background-color: rgba(108, 60, 151, 0.2);
+    }      
 }
 .account-user{
     position: relative;
@@ -117,6 +163,7 @@
         position: absolute;
         width: 100%;
         height: 200px;
+        border-radius: 100px;
         background-color: rgba(0,0,0,0.7);
         position: absolute;
         text-align: center;

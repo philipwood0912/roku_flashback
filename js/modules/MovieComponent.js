@@ -11,12 +11,12 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp main-border-full">
-                    <popup v-for="(movie, index) in this.moviesTen" :type="true" :obj="movie" :key="index" :offset="index">
+                    <popup class="main-popup" v-for="(movie, index) in this.moviesTen" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="1" :array="this.moviesTen" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
-                    <right :num="0" :array="this.moviesTen" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
+                    <left @hover="$parent.hovEff" :num="1" :match="0" :array="this.moviesTen" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right @hover="$parent.hovEff" :num="0" :match="1" :array="this.moviesTen" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -24,12 +24,12 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp main-border-full">
-                    <popup v-for="(movie, index) in this.moviesNine" :type="true" :obj="movie" :key="index" :offset="index">
+                    <popup class="main-popup" v-for="(movie, index) in this.moviesNine" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="3" :array="this.moviesNine" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
-                    <right :num="2" :array="this.moviesNine" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
+                    <left @hover="$parent.hovEff" :num="3" :match="2" :array="this.moviesNine" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right @hover="$parent.hovEff" :num="2" :match="3" :array="this.moviesNine" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -37,12 +37,12 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp main-border-full">
-                    <popup v-for="(movie, index) in this.moviesEight" :type="true" :obj="movie" :key="index" :offset="index">
+                    <popup class="main-popup" v-for="(movie, index) in this.moviesEight" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="5" :array="this.moviesEight" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
-                    <right :num="4" :array="this.moviesEight" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
+                    <left @hover="$parent.hovEff" :num="5" :match="4" :array="this.moviesEight" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right @hover="$parent.hovEff" :num="4" :match="5" :array="this.moviesEight" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -50,12 +50,12 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp main-border-full">
-                    <popup v-for="(movie, index) in this.moviesSeven" type="true" :obj="movie" :key="index" :offset="index">
+                    <popup class="main-popup" v-for="(movie, index) in this.moviesSeven" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="7" :array="this.moviesSeven" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
-                    <right :num="6" :array="this.moviesSeven" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
+                    <left @hover="$parent.hovEff" :num="7" :match="6" :array="this.moviesSeven" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right @hover="$parent.hovEff" :num="6" :match="7" :array="this.moviesSeven" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -63,12 +63,12 @@ export default {
             </div>
             <div class="content-main">
                 <div class="content-wrp main-border-full">
-                    <popup v-for="(movie, index) in this.moviesSix" :type="true" :obj="movie" :key="index" :offset="index">
+                    <popup class="main-popup" v-for="(movie, index) in this.moviesSix" :type="true" :obj="movie" :key="index" :offset="index">
                     </popup>
                 </div>
                 <div class="content-buttons">
-                    <left :num="9" :array="this.moviesSix" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
-                    <right :num="8" :array="this.moviesSix" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
+                    <left @hover="$parent.hovEff" :num="9" :match="8" :array="this.moviesSix" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></left>
+                    <right @hover="$parent.hovEff" :num="8" :match="9" :array="this.moviesSix" :color="'#6c3c97'" :marginclass="'movie-tv-arrow-margin'"></right>
                 </div>
             </div>
             <div class="title-wrp main-border-half">
@@ -97,6 +97,8 @@ export default {
         }
     },
     methods: {
+        // pull movies function, takes 3 parameters
+        // int1 - range-start year, int2 - range-end year, arr - array to push to
         pullMovies(int1, int2, arr){
             let url = `https://api.themoviedb.org/3/discover/movie?api_key=6c056957a2e9be6e0e41a303073bae05&language=en-US&region=US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${int1}-01-01&primary_release_date.lte=${int2}-12-31&vote_average.gte=7&vote_average.lte=10&without_genres=16%2C%2010751`;
             fetch(url)
@@ -111,6 +113,7 @@ export default {
         }
     },
     created: function() {
+        // on creation pull all needed content
         this.pullMovies(2000, 2019, this.moviesTen);
         this.pullMovies(1990, 1999, this.moviesNine);
         this.pullMovies(1980, 1989, this.moviesEight);
