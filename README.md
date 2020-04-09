@@ -1,7 +1,4 @@
 ![Logo](images/roku_logo.svg)
-<style>
-
-</style>
 # <span style="color:purple;">ROKU Flashback Application</span>
 
 ## Description
