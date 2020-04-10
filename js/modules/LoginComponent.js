@@ -8,7 +8,7 @@ export default {
             <div class="spiral sp-four"></div>
             <form id="login">
                 <img src="./images/roku_logo.svg" alt="logo">
-                <label class="yo">Email</label>
+                <label>{{this.message}}</label>
                 <input v-model="input.email" name="email" type="email">
                 <label>Password</label>
                 <input v-model="input.password" name="password" type="password">
@@ -26,13 +26,19 @@ export default {
                 email: "",
                 password: ""
             },
-
+            message: "Email"
         }
     },
 
     created: function(){
-        //login creation - set profilepick as false
+        //login creation
+        // reset vue variables
         this.$parent.profilepick = false;
+        this.$parent.authenticated = false;
+        this.$parent.users = [];
+        this.$parent.user = {};
+        this.$parent.permissions = false;
+        this.$parent.admin = false;
         // reset vue cookies default values
         this.$cookies.set('authenticated', false, 0);
         this.$cookies.set('users', [], 0);
@@ -64,12 +70,10 @@ export default {
                     .then(res => res.json())
                     .then(data => {
                         if (data.length === 0 || data === null || typeof data !== "object") { // means that we're not getting a user object back
-                            console.warn(data);
-                            alert("authentication failed, please try again");
+                            this.message = "Authentication failed!";
                         } else {
                             for(var i=0; i<data.length; i++){
                                 this.$parent.users.push(data[i]);
-                                debugger;
                             }
                             // set vue authenication
                             this.$parent.authenticated = true;
@@ -92,7 +96,7 @@ export default {
                         console.log(error);
                     });
             } else {
-                console.log("A username and password must be present");
+                this.message = "Please fill out required fields";
             }
         }
     }

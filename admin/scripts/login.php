@@ -13,7 +13,7 @@ function login($email, $password){
 
     if($user_set->fetchColumn()>0){
         //if user exists run select query with user email and password as conditions
-            $check_match_query = 'SELECT tbl_users.ID, tbl_users.F_Name, tbl_users.User_Email, tbl_profiles.Profile_Name,';
+            $check_match_query = 'SELECT tbl_users.ID, tbl_users.F_Name, tbl_users.User_Email, tbl_profiles.Profile_ID, tbl_profiles.Profile_Name,';
             $check_match_query .= ' tbl_profiles.Profile_Permissions, tbl_profiles.Profile_Avatar, tbl_profiles.Profile_Admin';
             $check_match_query .= ' FROM tbl_users INNER JOIN tbl_profiles ON tbl_users.ID = tbl_profiles.Profile_Link';
             $check_match_query .= ' WHERE tbl_users.User_Email =:email AND tbl_users.User_Pass =:password';
@@ -30,6 +30,7 @@ function login($email, $password){
                 $user = array();
                 $user['id'] = $founduser['ID'];
                 $user['fname'] = $founduser['F_Name'];
+                $user['pid'] = $founduser['Profile_ID'];
                 $user['pname'] = $founduser['Profile_Name'];
                 $user['permissions'] = $founduser['Profile_Permissions'];
                 $user['avatar'] = $founduser['Profile_Avatar'];
@@ -56,6 +57,7 @@ function login($email, $password){
                     $user = array();
                     $user['id'] = $founduser['ID'];
                     $user['fname'] = $founduser['F_Name'];
+                    $user['pid'] = "";
                     $user['pname'] = "";
                     $user['permissions'] = "";
                     $user['avatar'] = "";
