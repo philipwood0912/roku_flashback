@@ -10,6 +10,8 @@
             )
         );
         if($user_set->fetchColumn()<1){
+            // hash the password to be set in database
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
             $insert_query = 'INSERT INTO `tbl_users` (F_Name, L_Name, User_Email, User_Pass)';
             $insert_query .= ' VALUES (:fname, :lname, :email, :pass)';
             $user_insert = $pdo->prepare($insert_query);
@@ -18,7 +20,7 @@
                     ':fname'=>$firstname,
                     ':lname'=>$lastname,
                     ':email'=>$email,
-                    ':pass'=>$password
+                    ':pass'=>$password_hash
                 )
             );
             return "Account successfully created";

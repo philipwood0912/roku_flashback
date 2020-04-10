@@ -40,6 +40,7 @@ export default {
         this.$parent.permissions = false;
         this.$parent.admin = false;
         // reset vue cookies default values
+        this.$cookies.set('media', [], 0);
         this.$cookies.set('authenticated', false, 0);
         this.$cookies.set('users', [], 0);
         this.$cookies.set('profile', false, 0);

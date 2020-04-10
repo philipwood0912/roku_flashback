@@ -19,7 +19,7 @@ export default {
                 </div>
             </div>
             <div class="title-wrp main-border-half">
-                <h2 class="title main-border-less main-text-color">Stay turned for more music updates!</h2>
+                <h2 class="title main-border-less main-text-color">Stay tuned for more music updates!</h2>
             </div>
         </div>
     </div>

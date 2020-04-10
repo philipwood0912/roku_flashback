@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 10, 2020 at 05:26 AM
+-- Generation Time: Apr 10, 2020 at 08:02 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -83,9 +83,9 @@ CREATE TABLE `tbl_profiles` (
 
 INSERT INTO `tbl_profiles` (`Profile_ID`, `Profile_Link`, `Profile_Name`, `Profile_Permissions`, `Profile_Avatar`, `Profile_Admin`) VALUES
 (1, 1, 'Philip', 1, 'pokeball.svg', 1),
-(2, 1, 'Kidz', 0, 'chicken.svg', 0),
+(2, 1, 'Kids', 0, 'chicken.svg', 0),
 (3, 1, 'General', 1, 'smile.svg', 0),
-(4, 2, 'Brisky', 1, 'sick.svg', 1);
+(4, 3, 'Brisk', 1, 'sick.svg', 1);
 
 -- --------------------------------------------------------
 
@@ -95,10 +95,10 @@ INSERT INTO `tbl_profiles` (`Profile_ID`, `Profile_Link`, `Profile_Name`, `Profi
 
 CREATE TABLE `tbl_users` (
   `ID` int(11) NOT NULL,
-  `F_Name` varchar(40) NOT NULL,
-  `L_Name` varchar(40) NOT NULL,
-  `User_Email` varchar(60) NOT NULL,
-  `User_Pass` varchar(30) NOT NULL
+  `F_Name` varchar(63) NOT NULL,
+  `L_Name` varchar(63) NOT NULL,
+  `User_Email` varchar(63) NOT NULL,
+  `User_Pass` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -106,8 +106,8 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`ID`, `F_Name`, `L_Name`, `User_Email`, `User_Pass`) VALUES
-(1, 'Philip', 'Wood', 'philipwood0912@gmail.com', 'imsofly'),
-(2, 'Brisk', 'Yunus', 'briskyboy@gmail.com', '123');
+(1, 'Philip', 'Wood', 'philipwood0912@gmail.com', '$2y$10$5N6g2DY.W0MMXqB2SwnYfeDK91XXMcfreYnATNt3BH3dVlau/iOai'),
+(3, 'Brisk', 'Yunus', 'briskyboy@gmail.com', '$2y$10$uJZaWMxiw4TIdPk3Ev/wkua3ysXtiHmestAOEdRKGp1nZ5M1odprO');
 
 --
 -- Indexes for dumped tables
@@ -151,7 +151,7 @@ ALTER TABLE `tbl_profiles`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

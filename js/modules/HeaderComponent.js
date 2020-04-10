@@ -22,7 +22,7 @@ export default {
                         </div>
                     </div> 
                     <div v-if="!this.$parent.adminlock">
-                        <button class="headerButton" @mouseover="$parent.hovEff($event.currentTarget)" @mouseout="$parent.hovEff($event.currentTarget)" v-on:click="accountSetting()"><i class="fas fa-cog fa-2x" style="color:#6c3c97;"></i></button>
+                        <button class="headerButton" @mouseover="$parent.hovEff($event.currentTarget)" @mouseout="$parent.hovEff($event.currentTarget)" v-on:click="accountSetting()"><i class="fas fa-cog fa-2x" :style="{color: color}"></i></button>
                     </div>
                     <button class="headerButton" @mouseover="$parent.hovEff($event.currentTarget)" @mouseout="$parent.hovEff($event.currentTarget)" v-on:click="profilePicker()"><img class="userIcon" :src="'images/user/' + this.avatarcheck"></button>
                     <button class="headerButton" @mouseover="$parent.hovEff($event.currentTarget)" @mouseout="$parent.hovEff($event.currentTarget)" v-on:click="logout()" id="logout" name="logout"><i class="fas fa-sign-out-alt fa-2x" :style="{color: color}"></i></button>

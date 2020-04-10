@@ -54,7 +54,7 @@ export default {
         navToUserHome(data){
             // re-set cookies on profile pick
             this.$cookies.set('profile', true, 0);
-            this.$cookies.set('currentuser', JSON.stringify(data), 0);
+            this.$cookies.set('currentuser', data, 0);
             this.$cookies.set('isadmin', data.admin, 0);
             this.$cookies.set('permissions', data.permissions, 0);
             // also update main vue variables
