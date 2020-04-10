@@ -52,6 +52,7 @@ export default {
                     // and update the data property, then push to array
                     let trackSplit = data[i].tracks.split('^');
                     data[i].tracks = trackSplit;
+                    Object.assign(data[i], {audio: false});
                     arr.push(data[i]);
                 }
             })

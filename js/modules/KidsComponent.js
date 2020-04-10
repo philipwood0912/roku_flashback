@@ -119,6 +119,7 @@ export default {
             .then(res => res.json())
             .then(data => {
                 for(var i = 0; i < data.results.length; i++){
+                    Object.assign(data.results[i], {video: false});
                     arr.push(data.results[i]);
                 }
             })
@@ -134,6 +135,7 @@ export default {
                 for(var i = 0; i < data.length; i++){
                     let trackSplit = data[i].tracks.split('^');
                     data[i].tracks = trackSplit;
+                    Object.assign(data[i], {audio: false});
                     arr.push(data[i]);
                 }
             })

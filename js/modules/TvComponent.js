@@ -110,6 +110,7 @@ export default {
                     if(data.results[i].poster_path == null){
                         continue;
                     } else{
+                        Object.assign(data.results[i], {video: false});
                         arr.push(data.results[i]);
                     }
                 }

@@ -11,6 +11,7 @@ import HeaderComponent from "./modules/HeaderComponent.js";
 import FooterComponent from "./modules/FooterComponent.js";
 import SearchComponent from "./modules/SearchComponent.js";
 import AccountComponent from './modules/AccountComponent.js';
+import MediaComponent from "./modules/MediaComponent.js";
 const routes = [
     { path: '/', redirect: { name: "login" } },
     { path: '/login', name: 'login', component: LoginComponent },
@@ -23,6 +24,7 @@ const routes = [
     { path: '/movies', name: 'movies', component: MovieComponent },
     { path: '/tv', name: 'tv', component: TvComponent },
     { path: '/music', name: 'music', component: MusicComponent },
+    { path: '/media/:type/:name', name: 'media', component: MediaComponent, props: true},
     { path: '/*', name: 'error', component: ErrorComponent }
 ]
 
@@ -100,7 +102,7 @@ const vm = new Vue({
 }).$mount("#app");
 
 router.beforeEach((to, from, next) => {
-    if(to.path !== "/login" && to.path !== '/kids' && to.path !== "/home"){
+    if(to.path !== "/login"){
         if (vm.authenticated == false && to.path != '/signup') {
             next('/login');
         } else {
