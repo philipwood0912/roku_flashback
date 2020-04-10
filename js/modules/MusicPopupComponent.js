@@ -16,8 +16,8 @@ export default {
             </div>
         </div>
         <div class="popUpButtonsMusic" v-if="this.show">
-            <button>Rate <i class="fas fa-star fa-1x"></i></button>
-            <button @click="navToMedia(obj)">Listen <i class="fas fa-music fa-1x"></i></button>
+            <button class="popUpButton" type="button" @click="rateThis">Rate <i class="fas fa-star fa-1x"></i></button>
+            <button class="popUpButton" type="button" @click="navToMedia(obj)">Listen <i class="fas fa-music fa-1x"></i></button>
         </div>
     </div>
     `,
@@ -27,6 +27,9 @@ export default {
         }
     },
     methods: {
+        rateThis() {
+            alert('Not currently working. Check back later chief');
+        },
         navToMedia(obj){
             let type = "music",
                 name = obj.album;

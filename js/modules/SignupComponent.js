@@ -68,8 +68,7 @@ export default {
                         .then(res => res.json())
                         .then(data => {
                             if (data === null || typeof data !== "string") { 
-                                console.warn(data);
-                                alert("creation failed, please try again");
+                                this.message = "Sign Up Failed!";
                             } else {
                                 this.message = data;
                             }

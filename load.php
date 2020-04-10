@@ -14,4 +14,5 @@
     require_once ADMIN_SCRIPT_PATH.'/signup.php';
     require_once ADMIN_SCRIPT_PATH.'/edit.php';
     require_once ADMIN_SCRIPT_PATH.'/music.php';
+    require_once ADMIN_SCRIPT_PATH.'/delete.php';
     require_once ADMIN_SCRIPT_PATH.'/create.php';

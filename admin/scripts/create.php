@@ -26,7 +26,7 @@
                     ':admin'=>$admin
                 )
             );
-            $id = $new_user->lastInsertId();
+            $id = $pdo->lastInsertId();
             // return array with original parameters 
             $firstuser = array();
             $firstuser['pname'] = $name;
@@ -51,7 +51,7 @@
                     ':admin'=>$admin
                 )
             );
-            $id = $new_user->lastInsertId();
+            $id = $pdo->lastInsertId();
             // return array with original parameters
             $returnuser = array();
             $returnuser['pid'] = $id;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 09, 2020 at 08:57 PM
+-- Generation Time: Apr 10, 2020 at 05:26 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -69,7 +69,7 @@ INSERT INTO `tbl_music` (`Band_ID`, `Band_Name`, `Band_Album`, `Band_Tracks`, `B
 --
 
 CREATE TABLE `tbl_profiles` (
-  `ID` int(11) NOT NULL,
+  `Profile_ID` int(11) NOT NULL,
   `Profile_Link` int(11) NOT NULL,
   `Profile_Name` varchar(64) NOT NULL,
   `Profile_Permissions` tinyint(1) NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE `tbl_profiles` (
 -- Dumping data for table `tbl_profiles`
 --
 
-INSERT INTO `tbl_profiles` (`ID`, `Profile_Link`, `Profile_Name`, `Profile_Permissions`, `Profile_Avatar`, `Profile_Admin`) VALUES
+INSERT INTO `tbl_profiles` (`Profile_ID`, `Profile_Link`, `Profile_Name`, `Profile_Permissions`, `Profile_Avatar`, `Profile_Admin`) VALUES
 (1, 1, 'Philip', 1, 'pokeball.svg', 1),
 (2, 1, 'Kidz', 0, 'chicken.svg', 0),
 (3, 1, 'General', 1, 'smile.svg', 0),
@@ -123,7 +123,7 @@ ALTER TABLE `tbl_music`
 -- Indexes for table `tbl_profiles`
 --
 ALTER TABLE `tbl_profiles`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`Profile_ID`);
 
 --
 -- Indexes for table `tbl_users`
@@ -145,7 +145,7 @@ ALTER TABLE `tbl_music`
 -- AUTO_INCREMENT for table `tbl_profiles`
 --
 ALTER TABLE `tbl_profiles`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Profile_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`

@@ -10,3 +10,8 @@
         $newprofile = editProfile($id, $name, $oldname, $avatar, $permissions, $admin);
         echo json_encode($newprofile);
     }
+    if(isset($_POST['pid'])){
+        $pid = $_POST['pid'];
+        $message = deleteProfile($pid);
+        echo json_encode($message);
+    }

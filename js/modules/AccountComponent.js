@@ -52,6 +52,7 @@ export default {
                             <label class="chklabel">Admin</label>
                         </div><br>
                         <button v-on:click="editProfile()" type="button">Edit Profile</button>
+                        <button v-on:click="deleteProfile()" type="button">Delete Profile</button>
                     </div>
                     <div v-else></div>
                 </div>
@@ -77,10 +78,12 @@ export default {
                 avatar: "",
                 section: [],
                 admin: 0,
-                number: 0
+                number: 0,
+                pid: 0
             },
             accountedit: false,
             message: "Edit Profile",
+            userAdmin: false
         }
     },
     components: {
@@ -103,12 +106,42 @@ export default {
         },
         // click event function to select profile to edit
         edit(user, event){
+            // reset section array / message
+            this.input.section = [];
+            this.message = "Edit Profile";
+            //set admin value to use in delete function (non-editable opposed to input values)
+            this.userAdmin = Boolean(parseInt(user.admin));
             // set accountedit to true and update input values
             // input number is unique number for each profile
             this.accountedit = true;
+            this.input.pid = user.pid;
+            // had to parseInt and covert to Boolean on admin value to beable to use with checkboxes
+            this.input.admin = Boolean(parseInt(user.admin));
             this.input.name = user.pname;
+            this.input.section.push(user.permissions);
             this.input.avatar = user.avatar;
             this.input.number = event.currentTarget.dataset.userref;
+        },
+        deleteProfile(){
+            if(this.userAdmin){
+                this.message = "You can't delete an admin";
+            } else {
+                let formData = new FormData();
+                formData.append('pid', this.input.pid);
+                let url = `./admin/edit_page.php`;
+                fetch(url, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    this.users.splice(this.input.number);
+                    this.$cookies.set('users', JSON.stringify(this.users), 0);
+                    this.accountedit = false;
+                })
+                .catch(err => console.log(err))
+            }
         },
         editProfile(){
             if (this.input.name != "" && this.input.avatar != "" && this.input.section.length > 0) {
@@ -116,10 +149,11 @@ export default {
                 if(this.input.section.length > 1){
                     this.message = "Only one section can be picked.";
                 } else {
-                    // if admin input is empty - set admin value to 0 else set to 1
-                    if(this.input.admin == ""){
+                    // if admin input = false, set admin value as 0 to be put into db
+                    if(this.input.admin == false){
                         this.input.admin = 0;
                     } else {
+                        // else set as 1
                         this.input.admin = 1;
                     }
                     let formData = new FormData();
@@ -136,22 +170,22 @@ export default {
                         method: 'POST',
                         body: formData
                     })
-                        .then(res => res.json())
-                        .then(data => {
-                            // update users array according to unique profile number
-                            Object.assign(this.users[this.input.number], {
-                                pname: data.pname,
-                                avatar: data.avatar,
-                                permissions: data.permissions,
-                                admin: data.admin
-                            });
-                            // set users cookie with new information
-                            this.$cookies.set('users', JSON.stringify(this.users), 0);
-                            this.accountedit = false;
-                        })
-                        .catch(function (error) {
-                            console.log(error);
+                    .then(res => res.json())
+                    .then(data => {
+                        // update users array according to unique profile number
+                        Object.assign(this.users[this.input.number], {
+                            pname: data.pname,
+                            avatar: data.avatar,
+                            permissions: data.permissions,
+                            admin: data.admin
                         });
+                        // set users cookie with new information
+                        this.$cookies.set('users', JSON.stringify(this.users), 0);
+                        this.accountedit = false;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
                 }
             } else {
                 this.message = "Fill out required fields.";

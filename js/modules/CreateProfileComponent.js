@@ -16,9 +16,8 @@ export default {
                 <div id="create-wrp">
                     <div id="create-wht">
                         <h2>Create New Profile</h2>
-                        <h3>{{this.message}}</h3>
                         <form id="create-form">
-                            <label>Profile Name</label><br>
+                            <label>{{this.message}}</label><br>
                             <input v-model="input.name" name="name" type="text" value=""><br>
                             <label>Profile Setting</label><br>
                             <div class="check-wrp chk-top"><input class="check" type="checkbox" value="0" v-model="input.section"><label class="chklabel">Kids Only</label></div>
@@ -63,7 +62,7 @@ export default {
                 section: [],
                 avatar: "default.svg"
             },
-            message: ""
+            message: "Profile Name"
         }
     },
     created: function() {
@@ -138,7 +137,7 @@ export default {
                                     // reset users cookie with new info and set message
                                     
                                     this.$cookies.set('users', JSON.stringify(this.$parent.users), 0);
-                                    this.message = "New profile created!";
+                                    this.$router.back();
                                     
                                 }
                             }
