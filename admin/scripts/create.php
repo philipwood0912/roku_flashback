@@ -26,9 +26,11 @@
                     ':admin'=>$admin
                 )
             );
+            $id = $new_user->lastInsertId();
             // return array with original parameters 
             $firstuser = array();
             $firstuser['pname'] = $name;
+            $firstuser['pid'] = $id;
             $firstuser['section'] = $section;
             $firstuser['avatar'] = $avatar;
             $firstuser['admin'] = $admin;
@@ -49,8 +51,10 @@
                     ':admin'=>$admin
                 )
             );
+            $id = $new_user->lastInsertId();
             // return array with original parameters
             $returnuser = array();
+            $returnuser['pid'] = $id;
             $returnuser['pname'] = $name;
             $returnuser['section'] = $section;
             $returnuser['avatar'] = $avatar;

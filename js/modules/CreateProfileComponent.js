@@ -106,13 +106,13 @@ export default {
                         .then(data => {
                             
                             if (data === null || typeof data !== "object") { 
-                                console.warn(data);
-                                alert("creation failed, please try again");
+                                this.message = "Creation failed!";
                             } else {
                                 // if users[0] pname is empty
                                 // it is a new profile and will be handle as such
                                 if(this.$parent.users[0].pname == ""){
                                     // set users[0] pname, permissions, avatar, admin
+                                    this.$parent.users[0].pid = data.pid;
                                     this.$parent.users[0].pname = data.pname;
                                     this.$parent.users[0].permissions = data.section;
                                     this.$parent.users[0].avatar = data.avatar;
@@ -127,6 +127,7 @@ export default {
                                     let obj = {
                                         id: this.$parent.users[0].id,
                                         fname: this.$parent.users[0].fname,
+                                        pid: data.pid,
                                         pname: data.pname,
                                         permissions: data.section,
                                         avatar: data.avatar,
