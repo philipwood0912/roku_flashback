@@ -7,7 +7,7 @@ export default {
             <div class="music-content">
                 <transition name="popup">
                     <div v-if="this.show" class="music-info">
-                        <h2>{{obj.name}} - {{obj.album}}</h2>
+                        <h2>{{obj.artist}} - {{obj.album}}</h2>
                         <ul class="song-list">
                             <li v-for="song in obj.tracks">{{song}}</li>
                         </ul>
@@ -17,7 +17,7 @@ export default {
         </div>
         <div class="popUpButtonsMusic" v-if="this.show">
             <button>Rate <i class="fas fa-star fa-1x"></i></button>
-            <button>Listen <i class="fas fa-music fa-1x"></i></button>
+            <button @click="navToMedia(obj)">Listen <i class="fas fa-music fa-1x"></i></button>
         </div>
     </div>
     `,
@@ -27,6 +27,13 @@ export default {
         }
     },
     methods: {
+        navToMedia(obj){
+            let type = "music",
+                name = obj.album;
+            this.$root.profilepick = false;
+            this.$cookies.set('media', JSON.stringify(obj), 0);
+            this.$router.push({name: 'media', params: {type: type, name: name}});
+        },
         // same as normal popup function - could add to vue root
         // for reusability as the template is the only thing that changed
         showInfo(event, index){

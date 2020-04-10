@@ -12,7 +12,7 @@
         $music_data = array();
         while($data = $music_select->fetch(PDO::FETCH_ASSOC)){
             $add_data = array();
-            $add_data['name'] = $data['Band_Name'];
+            $add_data['artist'] = $data['Band_Name'];
             $add_data['album'] = $data['Band_Album'];
             $add_data['tracks'] = $data['Band_Tracks'];
             $add_data['image'] = $data['Band_Image'];

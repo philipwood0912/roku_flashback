@@ -32,7 +32,7 @@ export default {
             </div>
             <div class="popUpButtons" v-if="this.show">
                 <button>Rate <i class="fas fa-star fa-1x"></i></button>
-                <button>Watch <i class="fas fa-tv fa-1x"></i></button>
+                <button type="button" @click="navToMedia(obj)">Watch <i class="fas fa-tv fa-1x"></i></button>
             </div>
         </div>
     `,
@@ -42,6 +42,20 @@ export default {
         }
     },
     methods: {
+        navToMedia(obj){
+            let type,
+                name;
+            if(obj.title != null){
+                type = "movie";
+                name = obj.title;
+            } else {
+                type = "tv";
+                name = obj.name;
+            }
+            this.$root.profilepick = false;
+            this.$cookies.set('media', JSON.stringify(obj), 0);
+            this.$router.push({name: 'media', params: {type: type, name: name}});
+        },
         // popup function takes 2 parameters vue event, index
         showInfo(event, index){
             // variable declaration
