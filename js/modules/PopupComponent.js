@@ -31,8 +31,8 @@ export default {
                 </div>
             </div>
             <div class="popUpButtons" v-if="this.show">
-                <button>Rate <i class="fas fa-star fa-1x"></i></button>
-                <button type="button" @click="navToMedia(obj)">Watch <i class="fas fa-tv fa-1x"></i></button>
+                <button class="popUpButton" type="button" @click="rateThis">Rate <i class="fas fa-star fa-1x"></i></button>
+                <button class="popUpButton" type="button" @click="navToMedia(obj)">Watch <i class="fas fa-tv fa-1x"></i></button>
             </div>
         </div>
     `,
@@ -42,6 +42,9 @@ export default {
         }
     },
     methods: {
+        rateThis() {
+            alert('Not currently working. Check back later chief');
+        },
         navToMedia(obj){
             let type,
                 name;

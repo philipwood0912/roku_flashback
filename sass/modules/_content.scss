@@ -131,15 +131,20 @@
     width: 100%;
     z-index: 2000;
     opacity: 0.25;
-    transition: 1s ease;
+    transition: .5s ease;
     button {
         font-size: 30px;
         padding: 5px 17.5px;
-        //border: 2px solid $main-color;
     }
 }
 .popUpButtons:hover {
     opacity: 1;
+}
+.popUpButton {
+    transition: .3s ease;
+}
+.popUpButton:hover {
+    background-color: #d6d6d6;
 }
 
 .main-popup {
@@ -186,4 +191,3 @@
     border-bottom: 20px dotted rgba(108, 60, 151, 0.34);
     border-top: 20px dotted rgba(108, 60, 151, 0.34);
 }
-// rgba(111, 178, 112, 1)
