@@ -4,8 +4,7 @@ export default {
             <div id="signup-wrp">
                 <div id="signup-wht">
                     <img src="images/roku_logo.svg" alt="logo">
-                    <h2>Sign Up Now!</h2>
-                    <h3>{{this.message}}</h3>
+                    <h2>{{this.message}}</h2>
                     <form id="signup">
                         <label>First Name</label><br>
                         <input v-model="input.Fname" name="firstname" type="text"><br>
@@ -36,7 +35,7 @@ export default {
                 Password: "",
                 ConPassword: ""
             },
-            message: ""
+            message: "Sign Up Now!"
         }
     },
     created: function() {
@@ -52,7 +51,8 @@ export default {
         //signup function, new account is created and message is returned
         signup() {
             if (this.input.Fname != "" && this.input.Lname != "" && this.input.Email != "" && this.input.ConEmail != "" && this.input.Password != "" && this.input.ConPassword != "") {
-                if(this.input.Email === this.input.ConEmail || this.input.Password === this.input.ConPassword){
+                if(this.input.Email === this.input.ConEmail && this.input.Password === this.input.ConPassword){
+                    debugger;
                     let formData = new FormData();
                     formData.append("fname", this.input.Fname);
                     formData.append("lname", this.input.Lname);

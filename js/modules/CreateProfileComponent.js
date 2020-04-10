@@ -134,8 +134,7 @@ export default {
                                     };
                                     // push to users array
                                     this.$parent.users.push(obj);
-                                    // reset users cookie with new info and set message
-                                    
+                                    // reset users cookie with new info and route back
                                     this.$cookies.set('users', JSON.stringify(this.$parent.users), 0);
                                     this.$router.back();
                                     

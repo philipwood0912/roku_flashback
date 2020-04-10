@@ -79,17 +79,21 @@ export default {
                 section: [],
                 admin: 0,
                 number: 0,
-                pid: 0
+                pid: 0,
             },
             accountedit: false,
             message: "Edit Profile",
-            userAdmin: false
+            userAdmin: false,
+            currentuser: {},
+            userName: ""
         }
     },
     components: {
         accountuser: AccountUserComponent
     },
     created: function(){
+        // reset users array
+        this.users = [];
         // set users array on creation with users cookie information
         let userArr = JSON.parse(this.$cookies.get('users'));
         for(var i = 0; i < userArr.length; i++){
@@ -109,10 +113,13 @@ export default {
             // reset section array / message
             this.input.section = [];
             this.message = "Edit Profile";
-            //set admin value to use in delete function (non-editable opposed to input values)
+            //set admin value to use in delete function
             this.userAdmin = Boolean(parseInt(user.admin));
+            // set userName before alteration
+            this.userName = user.pname;
             // set accountedit to true and update input values
             // input number is unique number for each profile
+            // all inputs are set to display profile info
             this.accountedit = true;
             this.input.pid = user.pid;
             // had to parseInt and covert to Boolean on admin value to beable to use with checkboxes
@@ -123,6 +130,7 @@ export default {
             this.input.number = event.currentTarget.dataset.userref;
         },
         deleteProfile(){
+            // if user is admin return message
             if(this.userAdmin){
                 this.message = "You can't delete an admin";
             } else {
@@ -136,6 +144,7 @@ export default {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
+                    // cut deleted user out of users array and update users cookie
                     this.users.splice(this.input.number);
                     this.$cookies.set('users', JSON.stringify(this.users), 0);
                     this.accountedit = false;
@@ -144,11 +153,21 @@ export default {
             }
         },
         editProfile(){
+            // set current user for admin logic
+            this.currentuser = this.$cookies.get('currentuser');
+            //this.userName = this.currentuser.pname;
             if (this.input.name != "" && this.input.avatar != "" && this.input.section.length > 0) {
+                // if admin input is not equal to currentuser admin and users[position-of-user-2-edit] pname is equal to currentuser pname
+                // return message because that means admin is trying to edit him/herself
+                if(this.input.admin != this.currentuser.admin && this.users[this.input.number].pname == this.currentuser.pname){
+                        this.input.admin = 1;
+                        this.message = 'YOU ARE ADMIN';
+                    
                 // if more than 1 checkbox is selected in section, set message
-                if(this.input.section.length > 1){
+                } else if(this.input.section.length > 1){
                     this.message = "Only one section can be picked.";
                 } else {
+                    
                     // if admin input = false, set admin value as 0 to be put into db
                     if(this.input.admin == false){
                         this.input.admin = 0;
@@ -172,13 +191,24 @@ export default {
                     })
                     .then(res => res.json())
                     .then(data => {
-                        // update users array according to unique profile number
-                        Object.assign(this.users[this.input.number], {
+                        // create new obj to hold data
+                        let obj = {
+                            id: this.$parent.user.id,
+                            pid: this.input.pid,
+                            fname: this.$parent.user.fname,
                             pname: data.pname,
                             avatar: data.avatar,
                             permissions: data.permissions,
                             admin: data.admin
-                        });
+                        }
+                        // update users array according to unique profile number
+                        Object.assign(this.users[this.input.number], obj);
+                        // if currentuser profile id == input profile id, update currentuser cookie info
+                        if(this.currentuser.pid == this.input.pid){
+                            this.$cookies.set('currentuser', obj, 0);
+                            
+                        }
+                        
                         // set users cookie with new information
                         this.$cookies.set('users', JSON.stringify(this.users), 0);
                         this.accountedit = false;

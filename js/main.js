@@ -103,7 +103,6 @@ const vm = new Vue({
 
 router.beforeEach((to, from, next) => {
     if(to.path !== "/login"){
-        debugger;
         if (vm.authenticated == false && to.path != '/signup') {
             next('/login');
         } else if(vm.permissions == true && to.path == '/kids' || vm.permissions == false && from.path == '/kids' && to.path != '/create'){
