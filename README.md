@@ -80,13 +80,17 @@ If file was cloned / database imported properly, you should see a login screen.
 ### Browser compatibility
 
 * Chrome - 100%
-* Firefox - 100%
-* Safari - 100%
+* Firefox - 95%
+* Safari - 95%
 * IE - Unknown at the moment
+
+#### Firefox & Safari
+
+* Issues with CSS styles on buttons and borders, most likely compatibility problem.
 
 ### Live Site
 
-* Issue with display sizes after hosting, everything is much larger than localhost version. Currently looking into it.
+* Issue with display sizes after hosting, everything is much larger than localhost version.
 
 ## Authors
 
