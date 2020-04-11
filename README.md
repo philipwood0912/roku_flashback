@@ -30,7 +30,7 @@ Web browser and MAMP/WAMP installed on computer.
 
 Change directories to either htdocs(Mac) or www(Windows) within MAMP/WAMP and clone the repo!
 ```
-$ git clone https://github.com/philipwood0912/roku_flashback
+$ git clone https://github.com/philipwood0912/wood_p_yunus_b_roku_flashback.git
 ```
 ### Installing
 
@@ -47,7 +47,7 @@ Create / use database and import .sql file:
 ```
 mysql> CREATE DATABASE db_flashback;
 mysql> USE db_flashback;
-mysql> SOURCE /Applications/MAMP/htdocs/roku_flashback/database/db_flashback.sql;
+mysql> SOURCE /Applications/MAMP/htdocs/wood_p_yunus_b_roku_flashback/database/db_flashback.sql;
 ```
 Congratulations, you've imported the database!
 
@@ -58,7 +58,7 @@ If file was cloned into htdocs / www directory, navigate to MAMP/WAMP webpage an
 
 Or on a Mac navigate to URL:
 ```
-http://localhost:8888/roku_flashback/
+http://localhost:8888/wood_p_yunus_b_roku_flashback/
 ```
 
 If file was cloned / database imported properly, you should see a login screen.
