@@ -84,7 +84,7 @@ If file was cloned / database imported properly, you should see a login screen.
 * Safari - 95%
 * IE - Unknown at the moment
 
-#### Firefox & Safari
+### Firefox & Safari
 
 * Issues with CSS styles on buttons and borders, most likely compatibility problem.
 
