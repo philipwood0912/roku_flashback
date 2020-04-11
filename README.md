@@ -1,12 +1,12 @@
 ![logo](images/roku_logo.png)
 
-# <span style="color:purple;">ROKU Flashback Application</span>
+# ROKU Flashback Application
 
 ## Description
 
 A video and audio application designed for Roku - browse Movies, TV Shows and Music from all decades!  
 
-**For use on screen sizes larger than 768px**
+**For use on screen sizes larger than 768px(Localhost)-860px(Live Website)**
 
 ### Features
 * Account Sign-In / Sign-Up
@@ -17,6 +17,8 @@ A video and audio application designed for Roku - browse Movies, TV Shows and Mu
 * Kids Area
 
 **Check out the <a href="https://invis.io/RQWCOICTE73" target="_blank">Prototype</a>**
+
+**Check out the <a href="https://flashback.philipwood.online" target="_blank">Live Website</a>**
 
 ### Prerequisites
 
@@ -81,6 +83,10 @@ If file was cloned / database imported properly, you should see a login screen.
 * Firefox - 100%
 * Safari - 100%
 * IE - Unknown at the moment
+
+### Live Site
+
+* Issue with display sizes after hosting, everything is much larger than localhost version. Currently looking into it.
 
 ## Authors
 
