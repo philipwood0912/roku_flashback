@@ -146,6 +146,11 @@ export default {
                     console.log(data);
                     // cut deleted user out of users array and update users cookie
                     this.users.splice(this.input.number);
+                    for(var i = 0; i < this.$parent.users.length; i++){
+                        if(this.$parent.users[i].pid == this.input.pid){
+                            this.$parent.users.splice(i);
+                        }
+                    }
                     this.$cookies.set('users', JSON.stringify(this.users), 0);
                     this.accountedit = false;
                 })
