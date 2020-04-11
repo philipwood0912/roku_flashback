@@ -71,7 +71,7 @@ If file was cloned / database imported properly, you should see a login screen.
 * <a href="https://router.vuejs.org/api/" target="_blank">Vue-Router</a>
 * <a href="https://www.npmjs.com/package/vue-cookies" target="_blank">Vue-Cookies</a>
 * <a href="https://www.php.net/docs.php" target="_blank">PHP</a>
-* <a href="https://dev.mysql.com/doc/" target="_blank">SQL</a>
+* <a href="https://dev.mysql.com/doc/" target="_blank">MySQL</a>
 * <a href="https://sass-lang.com/documentation" target="_blank">SASS</a>
 
 --------------
