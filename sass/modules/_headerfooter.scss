@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     padding: 0px 10px;
+    //padding: 0px 5px;
 }
 .main-buttons-hover {
     background-color: rgba(108, 60, 151, 0.2);
@@ -40,6 +41,10 @@
     outline: 1px inset $main-color; 
     outline-offset:-1px;
     transition: .3s ease;
+    img {
+        width: 30px;
+        height: 30px;
+    }
 }
 // .headerButton:hover {
 //     background-color: rgba(108, 60, 151, 0.2);
